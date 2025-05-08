@@ -24,11 +24,16 @@
 
 import Foundation
 
+/// SessionDelegate 是 Alamofire 的核心累之一，实现了 URLSession 的各种代理方法，用于管理网络请求的生命周期。它充当了 URLSession 事件与Alamofire 请求对象之间的桥梁
+
 /// Class which implements the various `URLSessionDelegate` methods to connect various Alamofire features.
 open class SessionDelegate: NSObject, @unchecked Sendable {
+    /// 用于处理文件操作
     private let fileManager: FileManager
 
+    /// 提供会话状态相关的信息和控制
     weak var stateProvider: (any SessionStateProvider)?
+    /// 监控网络请求的各个阶段事件
     var eventMonitor: (any EventMonitor)?
 
     /// Creates an instance from the given `FileManager`.
@@ -68,7 +73,7 @@ protocol SessionStateProvider: AnyObject, Sendable {
 }
 
 // MARK: URLSessionDelegate
-
+// 处理基本的会话事件
 extension SessionDelegate: URLSessionDelegate {
     open func urlSession(_ session: URLSession, didBecomeInvalidWithError error: (any Error)?) {
         eventMonitor?.urlSession(session, didBecomeInvalidWithError: error)

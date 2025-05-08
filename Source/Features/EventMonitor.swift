@@ -312,15 +312,17 @@ extension EventMonitor {
 }
 
 /// An `EventMonitor` which can contain multiple `EventMonitor`s and calls their methods on their queues.
+/// 复合监控器
 public final class CompositeEventMonitor: EventMonitor {
     public let queue = DispatchQueue(label: "org.alamofire.compositeEventMonitor")
 
-    let monitors: Protected<[any EventMonitor]>
+    let monitors: Protected<[any EventMonitor]>   /// 支持多个监控器，加锁保护
 
     init(monitors: [any EventMonitor]) {
         self.monitors = Protected(monitors)
     }
 
+    /// 事件分发
     func performEvent(_ event: @escaping @Sendable (any EventMonitor) -> Void) {
         queue.async {
             self.monitors.read { monitors in

@@ -27,6 +27,8 @@ import Foundation
 /// `Session` creates and manages Alamofire's `Request` types during their lifetimes. It also provides common
 /// functionality for all `Request`s, including queuing, interception, trust management, redirect handling, and response
 /// cache handling.
+/// Session 负责创建和管理 Alamofire 的请求（Request）生命周期
+/// 为所有请求提供队列管理、拦截器、信任管理、重定向处理等通用功能
 open class Session: @unchecked Sendable {
     /// Shared singleton instance used by all `AF.request` APIs. Cannot be modified.
     public static let `default` = Session()
@@ -246,6 +248,9 @@ open class Session: @unchecked Sendable {
     /// Closure which provides a `URLRequest` for mutation.
     public typealias RequestModifier = @Sendable (inout URLRequest) throws -> Void
 
+    /// 处理普通的 Dictionary 类型参数
+    /// Parameters 是 [String: any Any & Sendable] 类型
+    /// 使用 ParameterEncoding 协议进行编码
     struct RequestConvertible: URLRequestConvertible {
         let url: any URLConvertible
         let method: HTTPMethod
@@ -294,6 +299,9 @@ open class Session: @unchecked Sendable {
         return request(convertible, interceptor: interceptor)
     }
 
+    /// 处理遵循 Encodable 协议的参数
+    /// 范型 Parameters 必须遵循 Encodable 和 Sendable 协议
+    /// 使用 ParameterEncoder 协议进行编码
     struct RequestEncodableConvertible<Parameters: Encodable & Sendable>: URLRequestConvertible {
         let url: any URLConvertible
         let method: HTTPMethod
@@ -1064,8 +1072,10 @@ open class Session: @unchecked Sendable {
 
             self.requestQueue.async {
                 // Leaf types must come first, otherwise they will cast as their superclass.
+                // 叶子类型必须排在第一位，否则它们将被转换为它们的父类。
                 switch request {
                 case let r as UploadRequest: self.performUploadRequest(r) // UploadRequest must come before DataRequest due to subtype relationship.
+                    // 由于子类型关系，UploadRequest 必须在 DataRequest 之前。
                 case let r as DataRequest: self.performDataRequest(r)
                 case let r as DownloadRequest: self.performDownloadRequest(r)
                 case let r as DataStreamRequest: self.performDataStreamRequest(r)
@@ -1086,6 +1096,9 @@ open class Session: @unchecked Sendable {
     }
 
     func performDataRequest(_ request: DataRequest) {
+        /// 确保在 requestQueue 上执行请求处理
+        /// 1、断言检查：验证当前代码是否在预期的队列上运行
+        /// 2、帮助开发者发现队列使用的问题
         dispatchPrecondition(condition: .onQueue(requestQueue))
 
         performSetupOperations(for: request, convertible: request.convertible)
@@ -1132,17 +1145,22 @@ open class Session: @unchecked Sendable {
         }
     }
 
+    /// 请求（Request）初始化的关键方法，确保请求被正确创建和配置后再发送
     func performSetupOperations(for request: Request,
                                 convertible: any URLRequestConvertible,
                                 shouldCreateTask: @escaping @Sendable () -> Bool = { true }) {
         dispatchPrecondition(condition: .onQueue(requestQueue))
 
+        /// 1、请求创建 URLRequest
         let initialRequest: URLRequest
 
         do {
+            /// 1.1 请求参数转换为 URLRequest
             initialRequest = try convertible.asURLRequest()
+            /// 1.2 验证请求的有效性
             try initialRequest.validate()
         } catch {
+            /// 1.3 错误处理
             rootQueue.async { request.didFailToCreateURLRequest(with: error.asAFError(or: .createURLRequestFailed(error: error))) }
             return
         }
@@ -1151,12 +1169,14 @@ open class Session: @unchecked Sendable {
 
         guard !request.isCancelled else { return }
 
+        /// 2、请求适配
         guard let adapter = adapter(for: request) else {
             guard shouldCreateTask() else { return }
             rootQueue.async { self.didCreateURLRequest(initialRequest, for: request) }
             return
         }
 
+        /// 2.1 使用 RequestAdapter 修改请求
         let adapterState = RequestAdapterState(requestID: request.id, session: self)
 
         adapter.adapt(initialRequest, using: adapterState) { result in
