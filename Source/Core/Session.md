@@ -423,4 +423,73 @@ func upload(multipartFormData: MultipartFormData, with request: URLRequestConver
 
 根据实际需求选择合适的上传方法。对于普通的文件上传用 File 方式,对于表单提交用 MultipartFormData,对于大文件可以考虑用 InputStream。
 
+### 单例线程安全
+
+在 Swift 中，`let default = Session()` 这种静态常量单例写法通过以下几个机制来保证线程安全和唯一性：
+
+1. 线程安全保证:
+```swift
+public static let `default` = Session()
+```
+- Swift 的 static let 声明会在类型第一次被访问时进行懒加载初始化
+- 这个初始化过程是由 Swift runtime 自动进行同步处理的，确保只会执行一次
+- 即使多个线程同时访问,也只有一个线程能完成初始化
+
+2. 唯一性保证:
+```swift
+// 单例实例被声明为常量
+public static let `default` = Session()
+
+// 初始化方法中的保护
+init() {
+    // 预检查配置有效性
+    precondition(session.configuration.identifier == nil,
+                 "Alamofire does not support background URLSessionConfigurations.")
+    
+    // 预检查队列有效性
+    precondition(session.delegateQueue.underlyingQueue === rootQueue,
+                 "Session must be passed the rootQueue as delegateQueue's underlyingQueue.")
+                 
+    // ...其他初始化逻辑
+}
+```
+- 使用 let 声明确保实例不可变
+- 使用 static 确保实例属于类型范围
+- 初始化方法中的 precondition 检查防止错误配置
+
+3. 访问控制:
+```swift
+// 公开单例访问
+public static let `default` = Session()
+
+// 但初始化方法也是公开的,允许创建新实例
+public init(configuration: URLSessionConfiguration = .default,
+           delegate: SessionDelegate = .init(),
+           rootQueue: DispatchQueue = .main) {
+    // ...
+}
+```
+- default 实例是公开的,方便使用
+- 但也允许创建新的实例,提供灵活性
+
+4. 线程安全的实例操作:
+```swift
+open class Session {
+    // 使用 serial queue 作为根队列
+    public let rootQueue: DispatchQueue
+    
+    // 请求队列也是串行的
+    public let requestQueue: DispatchQueue
+    
+    // 使用线程安全的容器
+    var requestTaskMap = RequestTaskMap()
+    var activeRequests: Set<Request> = []
+}
+```
+- 使用串行队列同步访问
+- 使用线程安全的数据结构
+- 关键操作都在指定队列中执行
+
+这样的设计既保证了单例的线程安全性和唯一性,又提供了必要的灵活性。
+
 

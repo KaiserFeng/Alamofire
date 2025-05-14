@@ -25,6 +25,7 @@
 import Foundation
 
 /// SessionDelegate 是 Alamofire 的核心累之一，实现了 URLSession 的各种代理方法，用于管理网络请求的生命周期。它充当了 URLSession 事件与Alamofire 请求对象之间的桥梁
+/// 其中，重要的功能就是 将 URLSession 事件路由到对应的 Request 对象
 
 /// Class which implements the various `URLSessionDelegate` methods to connect various Alamofire features.
 open class SessionDelegate: NSObject, @unchecked Sendable {
@@ -83,7 +84,7 @@ extension SessionDelegate: URLSessionDelegate {
 }
 
 // MARK: URLSessionTaskDelegate
-
+/// 处理任务级别的事件（完成、重定向、认证等）
 extension SessionDelegate: URLSessionTaskDelegate {
     /// Result of a `URLAuthenticationChallenge` evaluation.
     typealias ChallengeEvaluation = (disposition: URLSession.AuthChallengeDisposition, credential: URLCredential?, error: AFError?)

@@ -29,6 +29,7 @@ public class DataRequest: Request, @unchecked Sendable {
     /// `URLRequestConvertible` value used to create `URLRequest`s for this instance.
     public let convertible: any URLRequestConvertible
     /// `Data` read from the server so far.
+    /// 存储服务器返回的数据
     public var data: Data? { dataMutableState.data }
 
     private struct DataMutableState {

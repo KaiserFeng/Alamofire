@@ -86,6 +86,7 @@ struct RequestTaskMap {
         }
     }
 
+    /// 一致性检查
     var count: Int {
         precondition(tasksToRequests.count == requestsToTasks.count,
                      "RequestTaskMap.count invalid, requests.count: \(tasksToRequests.count) != tasks.count: \(requestsToTasks.count)")
@@ -112,6 +113,10 @@ struct RequestTaskMap {
         return taskEvents.isEmpty
     }
 
+    /// 智能解关联
+    /// 根据任务状态自动管理关联关系
+    /// 处理不同平台的性能指标收集差异
+    /// 防止内存泄漏
     mutating func disassociateIfNecessaryAfterGatheringMetricsForTask(_ task: URLSessionTask) -> Bool {
         guard let events = taskEvents[task] else {
             fatalError("RequestTaskMap consistency error: no events corresponding to task found.")

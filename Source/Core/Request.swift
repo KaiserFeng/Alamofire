@@ -47,16 +47,28 @@ public class Request: @unchecked Sendable {
         case finished
 
         /// Determines whether `self` can be transitioned to the provided `State`.
+        /// 用于控制 Request 的状态转换是否合法
         func canTransitionTo(_ state: State) -> Bool {
             switch (self, state) {
+                /// 从 initialized 状态可以转换到任何状态
             case (.initialized, _):
                 true
+                /// 不能转回初始状态
+                /// cancelled 状态不能转换到其他状态
+                /// finished 状态不能转换到其他状态
             case (_, .initialized), (.cancelled, _), (.finished, _):
                 false
+                /// 允许的状态转换
+                /// resumed -> cancelled
+                /// suspended -> cancelled
+                /// resumed -> suspended
+                /// suspended -> resumed
             case (.resumed, .cancelled), (.suspended, .cancelled), (.resumed, .suspended), (.suspended, .resumed):
                 true
+                /// 相同状态间的转换是不允许的
             case (.suspended, .suspended), (.resumed, .resumed):
                 false
+                /// 任何状态都可以转换到 finished 状态
             case (_, .finished):
                 true
             }
@@ -298,6 +310,7 @@ public class Request: @unchecked Sendable {
 
         eventMonitor?.request(self, didFailToCreateURLRequestWithError: error)
 
+        /// 主要用于处理 cURL 命令的生成和回调, 开发调试用的
         callCURLHandlerIfNecessary()
 
         retryOrFinish(error: error)
@@ -353,12 +366,16 @@ public class Request: @unchecked Sendable {
     }
 
     /// Asynchronously calls any stored `cURLHandler` and then removes it from `mutableState`.
+    /// 开发调试、问题诊断（开发辅助功能）
     private func callCURLHandlerIfNecessary() {
         mutableState.write { mutableState in
+            /// 1、检查是否存在 cURLHandler
             guard let cURLHandler = mutableState.cURLHandler else { return }
-
+            
+            /// 2、异步执行回调
             cURLHandler.queue.async { cURLHandler.handler(self.cURLDescription()) }
 
+            /// 3、清除 handler
             mutableState.cURLHandler = nil
         }
     }
