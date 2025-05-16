@@ -24,6 +24,17 @@
 
 import Foundation
 
+/*
+ 主要功能
+ 1、URL 参数编码
+ 2、JSON 参数编码
+ 3、灵活的参数编码配置
+ 4、支持复杂数据结构编码
+ 5、自动设置正确的 Content-Type
+ 
+ 这个文件是 Alamofire 参数编码的核心实现，提供了灵活而强大的参数编码功能。
+ */
+
 /// A dictionary of parameters to apply to a `URLRequest`.
 public typealias Parameters = [String: any Any & Sendable]
 
@@ -61,13 +72,17 @@ public struct URLEncoding: ParameterEncoding {
 
     /// Defines whether the url-encoded query string is applied to the existing query string or HTTP body of the
     /// resulting URL request.
+    /// 三种参数编码目标
     public enum Destination: Sendable {
         /// Applies encoded query string result to existing query string for `GET`, `HEAD` and `DELETE` requests and
         /// sets as the HTTP body for requests with any other HTTP method.
+        /// 根据 HTTP 方法决定
         case methodDependent
         /// Sets or appends encoded query string result to existing query string.
+        /// 作为URL查询参数
         case queryString
         /// Sets encoded query string result as the HTTP body of the URL request.
+        /// 作为请求体
         case httpBody
 
         func encodesParametersInURL(for method: HTTPMethod) -> Bool {
@@ -80,14 +95,19 @@ public struct URLEncoding: ParameterEncoding {
     }
 
     /// Configures how `Array` parameters are encoded.
+    /// 数组编码方式
     public enum ArrayEncoding: Sendable {
         /// An empty set of square brackets is appended to the key for every value. This is the default behavior.
+        /// key[] 方式
         case brackets
         /// No brackets are appended. The key is encoded as is.
+        /// 仅 key
         case noBrackets
         /// Brackets containing the item index are appended. This matches the jQuery and Node.js behavior.
+        /// key[0]方式
         case indexInBrackets
         /// Provide a custom array key encoding with the given closure.
+        /// 自定义方式
         case custom(@Sendable (_ key: String, _ index: Int) -> String)
 
         func encode(key: String, atIndex index: Int) -> String {
@@ -105,10 +125,13 @@ public struct URLEncoding: ParameterEncoding {
     }
 
     /// Configures how `Bool` parameters are encoded.
+    /// 布尔值编码方式
     public enum BoolEncoding: Sendable {
         /// Encode `true` as `1` and `false` as `0`. This is the default behavior.
+        /// true -> 1, false -> 0
         case numeric
         /// Encode `true` and `false` as string literals.
+        /// true -> true, false -> false
         case literal
 
         func encode(value: Bool) -> String {
@@ -242,6 +265,7 @@ public struct URLEncoding: ParameterEncoding {
 
 /// Uses `JSONSerialization` to create a JSON representation of the parameters object, which is set as the body of the
 /// request. The `Content-Type` HTTP header field of an encoded request is set to `application/json`.
+/// 将参数序列化为 JSON
 public struct JSONEncoding: ParameterEncoding {
     /// Error produced by `JSONEncoding`.
     public enum Error: Swift.Error {
@@ -305,6 +329,8 @@ public struct JSONEncoding: ParameterEncoding {
     /// - Returns:      The encoded `URLRequest`.
     /// - Throws:       Any `Error` produced during encoding.
     public func encode(_ urlRequest: any URLRequestConvertible, withJSONObject jsonObject: Any? = nil) throws -> URLRequest {
+        /// 设置 Content-Type：application/json
+        /// 使用JSONSerialization 序列化参数
         var urlRequest = try urlRequest.asURLRequest()
 
         guard let jsonObject else { return urlRequest }
