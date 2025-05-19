@@ -23,6 +23,10 @@
 //
 
 /// Type that acts as a generic extension point for all `AlamofireExtended` types.
+/// 扩展命名空间
+/// 通过范型支持任意类型扩展
+/// 支持链式调用
+/// 保持原类型整洁
 public struct AlamofireExtension<ExtendedType> {
     /// Stores the type or meta-type of any extended type.
     public private(set) var type: ExtendedType
@@ -36,6 +40,7 @@ public struct AlamofireExtension<ExtendedType> {
 }
 
 /// Protocol describing the `af` extension points for Alamofire extended types.
+/// 支持实例级和类型级扩展
 public protocol AlamofireExtended {
     /// Type being extended.
     associatedtype ExtendedType

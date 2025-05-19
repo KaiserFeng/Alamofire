@@ -29,6 +29,7 @@ import Foundation
 /// One common example of an `AuthenticationCredential` is an OAuth2 credential containing an access token used to
 /// authenticate all requests on behalf of a user. The access token generally has an expiration window of 60 minutes
 /// which will then require a refresh of the credential using the refresh token to generate a new access token.
+/// 认证凭证协议
 public protocol AuthenticationCredential {
     /// Whether the credential requires a refresh. This property should always return `true` when the credential is
     /// expired. It is also wise to consider returning `true` when the credential will expire in several seconds or
@@ -44,6 +45,7 @@ public protocol AuthenticationCredential {
 
 /// Types adopting the `Authenticator` protocol can be used to authenticate `URLRequest`s with an
 /// `AuthenticationCredential` as well as refresh the `AuthenticationCredential` when required.
+/// 认证器协议
 public protocol Authenticator: AnyObject, Sendable {
     /// The type of credential associated with the `Authenticator` instance.
     associatedtype Credential: AuthenticationCredential & Sendable
@@ -262,6 +264,7 @@ public final class AuthenticationInterceptor<AuthenticatorType>: RequestIntercep
             }
 
             // Queue the adapt operation and trigger refresh operation if credential requires refresh.
+            // 如需刷新则触发刷新流程
             guard !credential.requiresRefresh else {
                 let operation = AdaptOperation(urlRequest: urlRequest, session: session, completion: completion)
                 mutableState.adaptOperations.append(operation)
