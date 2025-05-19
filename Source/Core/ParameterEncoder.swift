@@ -24,7 +24,25 @@
 
 import Foundation
 
+/// 工作流程：
+/// 1、接收参数和请求
+/// 2、根据编码器类型选择编码策略
+/// 3、执行参数编码
+/// 4、设置适当的 Content-Type
+/// 5、返回编码后的请求
+///
+/// 主要特点：
+/// - 类型安全的参数编码
+/// - 支持 JSON 和 URL 编码
+/// - 灵活的编码配置
+/// - 符合 HTTP 标准的编码行为
+///
+/// 这是 Alamofire 参数编码系统的核心实现。
+
 /// A type that can encode any `Encodable` type into a `URLRequest`.
+/// 定义参数编码的基本协议
+/// 支持所有遵循 Encodable 的类型
+/// 返回编码后的 URLRequest
 public protocol ParameterEncoder: Sendable {
     /// Encode the provided `Encodable` parameters into `request`.
     ///
@@ -41,6 +59,9 @@ public protocol ParameterEncoder: Sendable {
 /// A `ParameterEncoder` that encodes types as JSON body data.
 ///
 /// If no `Content-Type` header is already set on the provided `URLRequest`s, it's set to `application/json`.
+/// JSON 参数编码实现
+/// 支持多种 JSON 格式化选项
+/// 自动设置 Content-Type
 open class JSONParameterEncoder: @unchecked Sendable, ParameterEncoder {
     /// Returns an encoder with default parameters.
     public static var `default`: JSONParameterEncoder { JSONParameterEncoder() }
@@ -112,6 +133,9 @@ extension ParameterEncoder where Self == JSONParameterEncoder {
 /// `application/x-www-form-urlencoded; charset=utf-8`.
 ///
 /// Encoding behavior can be customized by passing an instance of `URLEncodedFormEncoder` to the initializer.
+/// URL 编码实现
+/// 支持灵活的编码目标选择
+/// 自动处理查询字符串拼接
 open class URLEncodedFormParameterEncoder: @unchecked Sendable, ParameterEncoder {
     /// Defines where the URL-encoded string should be set for each `URLRequest`.
     public enum Destination {

@@ -504,6 +504,21 @@
 		41AA07B02DD1F31E00EB1F0C /* Request.md in Resources */ = {isa = PBXBuildFile; fileRef = 41AA07AD2DD1F31E00EB1F0C /* Request.md */; };
 		41AA07B12DD1F31E00EB1F0C /* Request.md in Resources */ = {isa = PBXBuildFile; fileRef = 41AA07AD2DD1F31E00EB1F0C /* Request.md */; };
 		41AA07B22DD1F31E00EB1F0C /* Request.md in Resources */ = {isa = PBXBuildFile; fileRef = 41AA07AD2DD1F31E00EB1F0C /* Request.md */; };
+		41C66F952DDB189A00F2AACB /* ParameterEncoder.md in Resources */ = {isa = PBXBuildFile; fileRef = 41C66F942DDB189A00F2AACB /* ParameterEncoder.md */; };
+		41C66F962DDB189A00F2AACB /* ParameterEncoder.md in Resources */ = {isa = PBXBuildFile; fileRef = 41C66F942DDB189A00F2AACB /* ParameterEncoder.md */; };
+		41C66F972DDB189A00F2AACB /* ParameterEncoder.md in Resources */ = {isa = PBXBuildFile; fileRef = 41C66F942DDB189A00F2AACB /* ParameterEncoder.md */; };
+		41C66F982DDB189A00F2AACB /* ParameterEncoder.md in Resources */ = {isa = PBXBuildFile; fileRef = 41C66F942DDB189A00F2AACB /* ParameterEncoder.md */; };
+		41C66F992DDB189A00F2AACB /* ParameterEncoder.md in Resources */ = {isa = PBXBuildFile; fileRef = 41C66F942DDB189A00F2AACB /* ParameterEncoder.md */; };
+		41C66F9B2DDB18BD00F2AACB /* ParameterEncoding.md in Resources */ = {isa = PBXBuildFile; fileRef = 41C66F9A2DDB18BD00F2AACB /* ParameterEncoding.md */; };
+		41C66F9C2DDB18BD00F2AACB /* ParameterEncoding.md in Resources */ = {isa = PBXBuildFile; fileRef = 41C66F9A2DDB18BD00F2AACB /* ParameterEncoding.md */; };
+		41C66F9D2DDB18BD00F2AACB /* ParameterEncoding.md in Resources */ = {isa = PBXBuildFile; fileRef = 41C66F9A2DDB18BD00F2AACB /* ParameterEncoding.md */; };
+		41C66F9E2DDB18BD00F2AACB /* ParameterEncoding.md in Resources */ = {isa = PBXBuildFile; fileRef = 41C66F9A2DDB18BD00F2AACB /* ParameterEncoding.md */; };
+		41C66F9F2DDB18BD00F2AACB /* ParameterEncoding.md in Resources */ = {isa = PBXBuildFile; fileRef = 41C66F9A2DDB18BD00F2AACB /* ParameterEncoding.md */; };
+		41C66FA12DDB1CB400F2AACB /* HTTPHeaders.md in Resources */ = {isa = PBXBuildFile; fileRef = 41C66FA02DDB1CB400F2AACB /* HTTPHeaders.md */; };
+		41C66FA22DDB1CB400F2AACB /* HTTPHeaders.md in Resources */ = {isa = PBXBuildFile; fileRef = 41C66FA02DDB1CB400F2AACB /* HTTPHeaders.md */; };
+		41C66FA32DDB1CB400F2AACB /* HTTPHeaders.md in Resources */ = {isa = PBXBuildFile; fileRef = 41C66FA02DDB1CB400F2AACB /* HTTPHeaders.md */; };
+		41C66FA42DDB1CB400F2AACB /* HTTPHeaders.md in Resources */ = {isa = PBXBuildFile; fileRef = 41C66FA02DDB1CB400F2AACB /* HTTPHeaders.md */; };
+		41C66FA52DDB1CB400F2AACB /* HTTPHeaders.md in Resources */ = {isa = PBXBuildFile; fileRef = 41C66FA02DDB1CB400F2AACB /* HTTPHeaders.md */; };
 		41D32EFC2DD48D9D00024056 /* RequestTaskMap.md in Resources */ = {isa = PBXBuildFile; fileRef = 41D32EFB2DD48D9D00024056 /* RequestTaskMap.md */; };
 		41D32EFD2DD48D9D00024056 /* RequestTaskMap.md in Resources */ = {isa = PBXBuildFile; fileRef = 41D32EFB2DD48D9D00024056 /* RequestTaskMap.md */; };
 		41D32EFE2DD48D9D00024056 /* RequestTaskMap.md in Resources */ = {isa = PBXBuildFile; fileRef = 41D32EFB2DD48D9D00024056 /* RequestTaskMap.md */; };
@@ -767,6 +782,9 @@
 		41A953352DCB49DE004078C5 /* 流程.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "流程.md"; sourceTree = "<group>"; };
 		41A9533B2DCB5B84004078C5 /* SessionDelegate.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = SessionDelegate.md; sourceTree = "<group>"; };
 		41AA07AD2DD1F31E00EB1F0C /* Request.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Request.md; sourceTree = "<group>"; };
+		41C66F942DDB189A00F2AACB /* ParameterEncoder.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ParameterEncoder.md; sourceTree = "<group>"; };
+		41C66F9A2DDB18BD00F2AACB /* ParameterEncoding.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ParameterEncoding.md; sourceTree = "<group>"; };
+		41C66FA02DDB1CB400F2AACB /* HTTPHeaders.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = HTTPHeaders.md; sourceTree = "<group>"; };
 		41D32EFB2DD48D9D00024056 /* RequestTaskMap.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = RequestTaskMap.md; sourceTree = "<group>"; };
 		4C0B58381B747A4400C0B99C /* ResponseSerializationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseSerializationTests.swift; sourceTree = "<group>"; };
 		4C0CB630220BC70300604EDC /* RequestInterceptorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestInterceptorTests.swift; sourceTree = "<group>"; };
@@ -996,10 +1014,13 @@
 				318702FD2B0AEF1D00C10A8C /* DataStreamRequest.swift */,
 				318703032B0AEF4B00C10A8C /* DownloadRequest.swift */,
 				319917A9209CDCB000103A19 /* HTTPHeaders.swift */,
+				41C66FA02DDB1CB400F2AACB /* HTTPHeaders.md */,
 				31727417218BAEC90039FFCC /* HTTPMethod.swift */,
 				4CB928281C66BFBC00CE5F08 /* Notifications.swift */,
 				3172741C218BB1790039FFCC /* ParameterEncoder.swift */,
+				41C66F942DDB189A00F2AACB /* ParameterEncoder.md */,
 				4CE2724E1AF88FB500F1D59A /* ParameterEncoding.swift */,
+				41C66F9A2DDB18BD00F2AACB /* ParameterEncoding.md */,
 				3191B5741F5F53A6003960A8 /* Protected.swift */,
 				41A953292DCB0F64004078C5 /* Protected.md */,
 				31991790209CDA7F00103A19 /* Request.swift */,
@@ -1615,7 +1636,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				411758202DD2EF9500CEAC50 /* DataRequest.md in Resources */,
+				41C66F962DDB189A00F2AACB /* ParameterEncoder.md in Resources */,
 				413048722DCC48D800F904A2 /* EventMonitor.md in Resources */,
+				41C66F9C2DDB18BD00F2AACB /* ParameterEncoding.md in Resources */,
 				41A953382DCB49DE004078C5 /* 流程.md in Resources */,
 				41AA07B12DD1F31E00EB1F0C /* Request.md in Resources */,
 				31BC5E7F2B7E9D730069BDEF /* PrivacyInfo.xcprivacy in Resources */,
@@ -1624,6 +1647,7 @@
 				4117B7572DD5B901002225CC /* Response.md in Resources */,
 				41A9532D2DCB0F64004078C5 /* Protected.md in Resources */,
 				41A953312DCB430D004078C5 /* Session.md in Resources */,
+				41C66FA52DDB1CB400F2AACB /* HTTPHeaders.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1670,7 +1694,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				411758222DD2EF9500CEAC50 /* DataRequest.md in Resources */,
+				41C66F992DDB189A00F2AACB /* ParameterEncoder.md in Resources */,
 				413048742DCC48D800F904A2 /* EventMonitor.md in Resources */,
+				41C66F9F2DDB18BD00F2AACB /* ParameterEncoding.md in Resources */,
 				41A953392DCB49DE004078C5 /* 流程.md in Resources */,
 				41AA07B02DD1F31E00EB1F0C /* Request.md in Resources */,
 				31BC5E7D2B7E9D660069BDEF /* PrivacyInfo.xcprivacy in Resources */,
@@ -1679,6 +1705,7 @@
 				4117B7592DD5B901002225CC /* Response.md in Resources */,
 				41A9532C2DCB0F64004078C5 /* Protected.md in Resources */,
 				41A953322DCB430D004078C5 /* Session.md in Resources */,
+				41C66FA32DDB1CB400F2AACB /* HTTPHeaders.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1725,7 +1752,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				411758212DD2EF9500CEAC50 /* DataRequest.md in Resources */,
+				41C66F952DDB189A00F2AACB /* ParameterEncoder.md in Resources */,
 				413048752DCC48D800F904A2 /* EventMonitor.md in Resources */,
+				41C66F9D2DDB18BD00F2AACB /* ParameterEncoding.md in Resources */,
 				41A9533A2DCB49DE004078C5 /* 流程.md in Resources */,
 				41AA07AE2DD1F31E00EB1F0C /* Request.md in Resources */,
 				31BC5E7C2B7E9D5F0069BDEF /* PrivacyInfo.xcprivacy in Resources */,
@@ -1734,6 +1763,7 @@
 				4117B7582DD5B901002225CC /* Response.md in Resources */,
 				41A9532A2DCB0F64004078C5 /* Protected.md in Resources */,
 				41A953342DCB430D004078C5 /* Session.md in Resources */,
+				41C66FA12DDB1CB400F2AACB /* HTTPHeaders.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1742,7 +1772,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4117581E2DD2EF9500CEAC50 /* DataRequest.md in Resources */,
+				41C66F982DDB189A00F2AACB /* ParameterEncoder.md in Resources */,
 				413048732DCC48D800F904A2 /* EventMonitor.md in Resources */,
+				41C66F9B2DDB18BD00F2AACB /* ParameterEncoding.md in Resources */,
 				41A953362DCB49DE004078C5 /* 流程.md in Resources */,
 				41AA07AF2DD1F31E00EB1F0C /* Request.md in Resources */,
 				31BC5E7E2B7E9D6D0069BDEF /* PrivacyInfo.xcprivacy in Resources */,
@@ -1751,6 +1783,7 @@
 				4117B75B2DD5B901002225CC /* Response.md in Resources */,
 				41A9532E2DCB0F64004078C5 /* Protected.md in Resources */,
 				41A953302DCB430D004078C5 /* Session.md in Resources */,
+				41C66FA22DDB1CB400F2AACB /* HTTPHeaders.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1759,7 +1792,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4117581F2DD2EF9500CEAC50 /* DataRequest.md in Resources */,
+				41C66F972DDB189A00F2AACB /* ParameterEncoder.md in Resources */,
 				413048762DCC48D800F904A2 /* EventMonitor.md in Resources */,
+				41C66F9E2DDB18BD00F2AACB /* ParameterEncoding.md in Resources */,
 				41A953372DCB49DE004078C5 /* 流程.md in Resources */,
 				41AA07B22DD1F31E00EB1F0C /* Request.md in Resources */,
 				31BC5E7B2B7E9D520069BDEF /* PrivacyInfo.xcprivacy in Resources */,
@@ -1768,6 +1803,7 @@
 				4117B75A2DD5B901002225CC /* Response.md in Resources */,
 				41A9532B2DCB0F64004078C5 /* Protected.md in Resources */,
 				41A953332DCB430D004078C5 /* Session.md in Resources */,
+				41C66FA42DDB1CB400F2AACB /* HTTPHeaders.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
