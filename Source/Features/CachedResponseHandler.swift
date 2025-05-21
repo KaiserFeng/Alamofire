@@ -25,6 +25,10 @@
 import Foundation
 
 /// A type that handles whether the data task should store the HTTP response in the cache.
+/// - 灵活控制缓存策略
+/// - 优化网络性能
+/// - 自定义缓存行为
+/// - 实现更精细的缓存控制
 public protocol CachedResponseHandler: Sendable {
     /// Determines whether the HTTP response should be stored in the cache.
     ///
@@ -51,19 +55,28 @@ public struct ResponseCacher {
     /// Defines the behavior of the `ResponseCacher` type.
     public enum Behavior: Sendable {
         /// Stores the cached response in the cache.
+        /// 缓存响应
         case cache
         /// Prevents the cached response from being stored in the cache.
+        /// 不缓存响应
         case doNotCache
         /// Modifies the cached response before storing it in the cache.
+        /// 修改响应后缓存
         case modify(@Sendable (_ task: URLSessionDataTask, _ cachedResponse: CachedURLResponse) -> CachedURLResponse?)
     }
 
     /// Returns a `ResponseCacher` with a `.cache` `Behavior`.
+    /// static 属性（静态属性）： 通过类型直接访问
+    /// let cacher = ResponseCacheer,cache  // 直接通过类型访问
     public static let cache = ResponseCacher(behavior: .cache)
     /// Returns a `ResponseCacher` with a `.doNotCache` `Behavior`.
     public static let doNotCache = ResponseCacher(behavior: .doNotCache)
 
     /// The `Behavior` of the `ResponseCacher`.
+    /// 实例属性
+    /// 非 static 属性：需要实例才能访问
+    /// let cacher = ResponseCacher(begavior: .cache)
+    /// let behavior = cacher.behavior  // 需要实例才能访问
     public let behavior: Behavior
 
     /// Creates a `ResponseCacher` instance from the `Behavior`.

@@ -33,6 +33,11 @@ import SystemConfiguration
 /// Reachability can be used to determine background information about why a network operation failed, or to retry
 /// network requests when a connection is established. It should not be used to prevent a user from initiating a network
 /// request, as it's possible that an initial request may be required to establish reachability.
+/// 网络可达性管理器，用于监控网络连接状态。
+/// - 网络状态检测
+/// - 离线模式处理
+/// - 网络切换响应
+/// - 网络质量监控
 open class NetworkReachabilityManager: @unchecked Sendable {
     /// Defines the various states of network reachability.
     public enum NetworkReachabilityStatus: Sendable {

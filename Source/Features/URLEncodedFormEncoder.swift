@@ -51,16 +51,21 @@ import Foundation
 /// replacing spaces with `%20`.
 ///
 /// This type is largely based on Vapor's [`url-encoded-form`](https://github.com/vapor/url-encoded-form) project.
+/// 这个类的存在是为了处理 HTTP 请求中的参数编码。
 public final class URLEncodedFormEncoder {
     /// Encoding to use for `Array` values.
     public enum ArrayEncoding {
         /// An empty set of square brackets ("[]") are appended to the key for every value. This is the default encoding.
+        /// items[]=1&items[]=2
         case brackets
         /// No brackets are appended to the key and the key is encoded as is.
+        /// items=1&items=2
         case noBrackets
         /// Brackets containing the item index are appended. This matches the jQuery and Node.js behavior.
+        /// items[0]=1&items[1]=2
         case indexInBrackets
         /// Provide a custom array key encoding with the given closure.
+        /// 自定义编码方式
         case custom((_ key: String, _ index: Int) -> String)
 
         /// Encodes the key according to the encoding.
@@ -83,8 +88,10 @@ public final class URLEncodedFormEncoder {
     /// Encoding to use for `Bool` values.
     public enum BoolEncoding {
         /// Encodes `true` as `1`, `false` as `0`.
+        /// true -> "1", false -> "0"
         case numeric
         /// Encodes `true` as "true", `false` as "false". This is the default encoding.
+        /// true -> "true", false -> "false"
         case literal
 
         /// Encodes the given `Bool` as a `String`.
@@ -103,6 +110,7 @@ public final class URLEncodedFormEncoder {
     /// Encoding to use for `Data` values.
     public enum DataEncoding {
         /// Defers encoding to the `Data` type.
+        /// 默认编码
         case deferredToData
         /// Encodes `Data` as a Base64-encoded string. This is the default encoding.
         case base64
@@ -134,16 +142,22 @@ public final class URLEncodedFormEncoder {
         }())
 
         /// Defers encoding to the `Date` type. This is the default encoding.
+        /// 默认编码
         case deferredToDate
         /// Encodes `Date`s as seconds since midnight UTC on January 1, 1970.
+        /// 时间戳（秒）
         case secondsSince1970
         /// Encodes `Date`s as milliseconds since midnight UTC on January 1, 1970.
+        /// 时间戳（毫秒）
         case millisecondsSince1970
         /// Encodes `Date`s according to the ISO8601 and RFC3339 standards.
+        /// ISO8601格式
         case iso8601
         /// Encodes `Date`s using the given `DateFormatter`.
+        /// 自定义格式
         case formatted(DateFormatter)
         /// Encodes `Date`s using the given closure.
+        /// 自定义编码
         case custom((Date) throws -> String)
 
         /// Encodes the date according to the encoding.
@@ -176,6 +190,7 @@ public final class URLEncodedFormEncoder {
     /// and [`XMLEncoder`s `KeyEncodingStrategy`](https://github.com/MaxDesiatov/XMLCoder/blob/master/Sources/XMLCoder/Encoder/XMLEncoder.swift#L102).
     public enum KeyEncoding {
         /// Use the keys specified by each type. This is the default encoding.
+        /// 使用默认键名
         case useDefaultKeys
         /// Convert from "camelCaseKeys" to "snake_case_keys" before writing a key.
         ///
@@ -195,20 +210,26 @@ public final class URLEncodedFormEncoder {
         /// For example, `oneTwoThree` becomes `one_two_three`. `_oneTwoThree_` becomes `_one_two_three_`.
         ///
         /// - Note: Using a key encoding strategy has a nominal performance cost, as each string key has to be converted.
+        /// 驼峰转下划线
         case convertToSnakeCase
         /// Same as convertToSnakeCase, but using `-` instead of `_`.
         /// For example `oneTwoThree` becomes `one-two-three`.
+        /// 驼峰转中划线
         case convertToKebabCase
         /// Capitalize the first letter only.
         /// For example `oneTwoThree` becomes  `OneTwoThree`.
+        /// 首字母大写
         case capitalized
         /// Uppercase all letters.
         /// For example `oneTwoThree` becomes  `ONETWOTHREE`.
+        /// 全部大写
         case uppercased
         /// Lowercase all letters.
         /// For example `oneTwoThree` becomes  `onetwothree`.
+        /// 全部小写
         case lowercased
         /// A custom encoding using the provided closure.
+        /// 自定义编码
         case custom((String) -> String)
 
         func encode(_ key: String) -> String {
@@ -431,15 +452,20 @@ public final class URLEncodedFormEncoder {
         self.allowedCharacters = allowedCharacters
     }
 
+    /// 编码过程
     func encode(_ value: any Encodable) throws -> URLEncodedFormComponent {
+        /// 1、创建编码上下文
         let context = URLEncodedFormContext(.object([]))
+        /// 2、创建编码器
         let encoder = _URLEncodedFormEncoder(context: context,
                                              boolEncoding: boolEncoding,
                                              dataEncoding: dataEncoding,
                                              dateEncoding: dateEncoding,
                                              nilEncoding: nilEncoding)
+        /// 3、执行编码
         try value.encode(to: encoder)
 
+        /// 4、获取编码结果
         return context.component
     }
 
@@ -452,6 +478,7 @@ public final class URLEncodedFormEncoder {
     public func encode(_ value: any Encodable) throws -> String {
         let component: URLEncodedFormComponent = try encode(value)
 
+        /// 5、序列化为最终字符串
         guard case let .object(object) = component else {
             throw Error.invalidRootObject("\(component)")
         }
@@ -509,6 +536,7 @@ final class _URLEncodedFormEncoder {
     }
 }
 
+/// 实现 Encoder 协议的三个必需方法
 extension _URLEncodedFormEncoder: Encoder {
     func container<Key>(keyedBy type: Key.Type) -> KeyedEncodingContainer<Key> where Key: CodingKey {
         let container = _URLEncodedFormEncoder.KeyedContainer<Key>(context: context,
@@ -688,6 +716,7 @@ extension _URLEncodedFormEncoder {
     }
 }
 
+/// 键值对容器
 extension _URLEncodedFormEncoder.KeyedContainer: KeyedEncodingContainerProtocol {
     func encodeNil(forKey key: Key) throws {
         guard let nilValue = nilEncoding.encodeNil() else { return }
@@ -763,6 +792,7 @@ extension _URLEncodedFormEncoder.KeyedContainer: KeyedEncodingContainerProtocol 
         }
     }
 
+    /// 处理字典类型的编码
     func encode<T>(_ value: T, forKey key: Key) throws where T: Encodable {
         var container = nestedSingleValueEncoder(for: key)
         try container.encode(value)
@@ -856,6 +886,7 @@ extension _URLEncodedFormEncoder {
     }
 }
 
+/// 单值容器
 extension _URLEncodedFormEncoder.SingleValueContainer: SingleValueEncodingContainer {
     func encodeNil() throws {
         guard let nilValue = nilEncoding.encodeNil() else { return }
@@ -863,6 +894,7 @@ extension _URLEncodedFormEncoder.SingleValueContainer: SingleValueEncodingContai
         try encode(nilValue)
     }
 
+    /// 处理简单值类型的编码
     func encode(_ value: Bool) throws {
         try encode(value, as: String(boolEncoding.encode(value)))
     }
@@ -926,9 +958,11 @@ extension _URLEncodedFormEncoder.SingleValueContainer: SingleValueEncodingContai
         context.component.set(to: .string(string), at: codingPath)
     }
 
+    /// 处理特殊类型
     func encode<T>(_ value: T) throws where T: Encodable {
         switch value {
         case let date as Date:
+            /// 日期处理
             guard let string = try dateEncoding.encode(date) else {
                 try attemptToEncode(value)
                 return
@@ -936,6 +970,7 @@ extension _URLEncodedFormEncoder.SingleValueContainer: SingleValueEncodingContai
 
             try encode(value, as: string)
         case let data as Data:
+            /// 二进制数据处理
             guard let string = try dataEncoding.encode(data) else {
                 try attemptToEncode(value)
                 return
@@ -944,8 +979,10 @@ extension _URLEncodedFormEncoder.SingleValueContainer: SingleValueEncodingContai
             try encode(value, as: string)
         case let decimal as Decimal:
             // Decimal's `Encodable` implementation returns an object, not a single value, so override it.
+            /// Decimal 类型处理
             try encode(value, as: String(describing: decimal))
         default:
+            /// 其他类型的通用处理
             try attemptToEncode(value)
         }
     }
@@ -995,6 +1032,7 @@ extension _URLEncodedFormEncoder {
     }
 }
 
+/// 无键数组容器
 extension _URLEncodedFormEncoder.UnkeyedContainer: UnkeyedEncodingContainer {
     func encodeNil() throws {
         guard let nilValue = nilEncoding.encodeNil() else { return }
@@ -1002,6 +1040,7 @@ extension _URLEncodedFormEncoder.UnkeyedContainer: UnkeyedEncodingContainer {
         try encode(nilValue)
     }
 
+    /// 处理数组类型的编码
     func encode<T>(_ value: T) throws where T: Encodable {
         var container = nestedSingleValueContainer()
         try container.encode(value)

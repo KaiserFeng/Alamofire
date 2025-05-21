@@ -475,6 +475,21 @@
 		413048742DCC48D800F904A2 /* EventMonitor.md in Resources */ = {isa = PBXBuildFile; fileRef = 413048712DCC48D800F904A2 /* EventMonitor.md */; };
 		413048752DCC48D800F904A2 /* EventMonitor.md in Resources */ = {isa = PBXBuildFile; fileRef = 413048712DCC48D800F904A2 /* EventMonitor.md */; };
 		413048762DCC48D800F904A2 /* EventMonitor.md in Resources */ = {isa = PBXBuildFile; fileRef = 413048712DCC48D800F904A2 /* EventMonitor.md */; };
+		4135F5B42DDC289C0087FFC8 /* CachedResponseHandler.md in Resources */ = {isa = PBXBuildFile; fileRef = 4135F5B32DDC289C0087FFC8 /* CachedResponseHandler.md */; };
+		4135F5B52DDC289C0087FFC8 /* CachedResponseHandler.md in Resources */ = {isa = PBXBuildFile; fileRef = 4135F5B32DDC289C0087FFC8 /* CachedResponseHandler.md */; };
+		4135F5B62DDC289C0087FFC8 /* CachedResponseHandler.md in Resources */ = {isa = PBXBuildFile; fileRef = 4135F5B32DDC289C0087FFC8 /* CachedResponseHandler.md */; };
+		4135F5B72DDC289C0087FFC8 /* CachedResponseHandler.md in Resources */ = {isa = PBXBuildFile; fileRef = 4135F5B32DDC289C0087FFC8 /* CachedResponseHandler.md */; };
+		4135F5B82DDC289C0087FFC8 /* CachedResponseHandler.md in Resources */ = {isa = PBXBuildFile; fileRef = 4135F5B32DDC289C0087FFC8 /* CachedResponseHandler.md */; };
+		4135F5BA2DDC2F680087FFC8 /* NetworkReachabilityManager.md in Resources */ = {isa = PBXBuildFile; fileRef = 4135F5B92DDC2F680087FFC8 /* NetworkReachabilityManager.md */; };
+		4135F5BB2DDC2F680087FFC8 /* NetworkReachabilityManager.md in Resources */ = {isa = PBXBuildFile; fileRef = 4135F5B92DDC2F680087FFC8 /* NetworkReachabilityManager.md */; };
+		4135F5BC2DDC2F680087FFC8 /* NetworkReachabilityManager.md in Resources */ = {isa = PBXBuildFile; fileRef = 4135F5B92DDC2F680087FFC8 /* NetworkReachabilityManager.md */; };
+		4135F5BD2DDC2F680087FFC8 /* NetworkReachabilityManager.md in Resources */ = {isa = PBXBuildFile; fileRef = 4135F5B92DDC2F680087FFC8 /* NetworkReachabilityManager.md */; };
+		4135F5BE2DDC2F680087FFC8 /* NetworkReachabilityManager.md in Resources */ = {isa = PBXBuildFile; fileRef = 4135F5B92DDC2F680087FFC8 /* NetworkReachabilityManager.md */; };
+		4135F5C02DDC64B20087FFC8 /* Validation.md in Resources */ = {isa = PBXBuildFile; fileRef = 4135F5BF2DDC64B20087FFC8 /* Validation.md */; };
+		4135F5C12DDC64B20087FFC8 /* Validation.md in Resources */ = {isa = PBXBuildFile; fileRef = 4135F5BF2DDC64B20087FFC8 /* Validation.md */; };
+		4135F5C22DDC64B20087FFC8 /* Validation.md in Resources */ = {isa = PBXBuildFile; fileRef = 4135F5BF2DDC64B20087FFC8 /* Validation.md */; };
+		4135F5C32DDC64B20087FFC8 /* Validation.md in Resources */ = {isa = PBXBuildFile; fileRef = 4135F5BF2DDC64B20087FFC8 /* Validation.md */; };
+		4135F5C42DDC64B20087FFC8 /* Validation.md in Resources */ = {isa = PBXBuildFile; fileRef = 4135F5BF2DDC64B20087FFC8 /* Validation.md */; };
 		4196936222FA1E05001EA5D5 /* Result+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4196936122FA1E05001EA5D5 /* Result+Alamofire.swift */; };
 		4196936322FA1E05001EA5D5 /* Result+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4196936122FA1E05001EA5D5 /* Result+Alamofire.swift */; };
 		4196936422FA1E05001EA5D5 /* Result+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4196936122FA1E05001EA5D5 /* Result+Alamofire.swift */; };
@@ -534,6 +549,16 @@
 		41D32EFE2DD48D9D00024056 /* RequestTaskMap.md in Resources */ = {isa = PBXBuildFile; fileRef = 41D32EFB2DD48D9D00024056 /* RequestTaskMap.md */; };
 		41D32EFF2DD48D9D00024056 /* RequestTaskMap.md in Resources */ = {isa = PBXBuildFile; fileRef = 41D32EFB2DD48D9D00024056 /* RequestTaskMap.md */; };
 		41D32F002DD48D9D00024056 /* RequestTaskMap.md in Resources */ = {isa = PBXBuildFile; fileRef = 41D32EFB2DD48D9D00024056 /* RequestTaskMap.md */; };
+		41DDE4D92DDDAB0600BBAF09 /* URLEncodedFormEncoder.md in Resources */ = {isa = PBXBuildFile; fileRef = 41DDE4D82DDDAB0600BBAF09 /* URLEncodedFormEncoder.md */; };
+		41DDE4DA2DDDAB0600BBAF09 /* URLEncodedFormEncoder.md in Resources */ = {isa = PBXBuildFile; fileRef = 41DDE4D82DDDAB0600BBAF09 /* URLEncodedFormEncoder.md */; };
+		41DDE4DB2DDDAB0600BBAF09 /* URLEncodedFormEncoder.md in Resources */ = {isa = PBXBuildFile; fileRef = 41DDE4D82DDDAB0600BBAF09 /* URLEncodedFormEncoder.md */; };
+		41DDE4DC2DDDAB0600BBAF09 /* URLEncodedFormEncoder.md in Resources */ = {isa = PBXBuildFile; fileRef = 41DDE4D82DDDAB0600BBAF09 /* URLEncodedFormEncoder.md */; };
+		41DDE4DD2DDDAB0600BBAF09 /* URLEncodedFormEncoder.md in Resources */ = {isa = PBXBuildFile; fileRef = 41DDE4D82DDDAB0600BBAF09 /* URLEncodedFormEncoder.md */; };
+		41DDE4DF2DDDC76A00BBAF09 /* RedirectHandler.md in Resources */ = {isa = PBXBuildFile; fileRef = 41DDE4DE2DDDC76A00BBAF09 /* RedirectHandler.md */; };
+		41DDE4E02DDDC76A00BBAF09 /* RedirectHandler.md in Resources */ = {isa = PBXBuildFile; fileRef = 41DDE4DE2DDDC76A00BBAF09 /* RedirectHandler.md */; };
+		41DDE4E12DDDC76A00BBAF09 /* RedirectHandler.md in Resources */ = {isa = PBXBuildFile; fileRef = 41DDE4DE2DDDC76A00BBAF09 /* RedirectHandler.md */; };
+		41DDE4E22DDDC76A00BBAF09 /* RedirectHandler.md in Resources */ = {isa = PBXBuildFile; fileRef = 41DDE4DE2DDDC76A00BBAF09 /* RedirectHandler.md */; };
+		41DDE4E32DDDC76A00BBAF09 /* RedirectHandler.md in Resources */ = {isa = PBXBuildFile; fileRef = 41DDE4DE2DDDC76A00BBAF09 /* RedirectHandler.md */; };
 		4C0CB631220BC70300604EDC /* RequestInterceptorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0CB630220BC70300604EDC /* RequestInterceptorTests.swift */; };
 		4C0CB632220BC70300604EDC /* RequestInterceptorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0CB630220BC70300604EDC /* RequestInterceptorTests.swift */; };
 		4C0CB633220BC70300604EDC /* RequestInterceptorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0CB630220BC70300604EDC /* RequestInterceptorTests.swift */; };
@@ -786,6 +811,9 @@
 		4117581D2DD2EF9500CEAC50 /* DataRequest.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DataRequest.md; sourceTree = "<group>"; };
 		4117B7562DD5B901002225CC /* Response.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Response.md; sourceTree = "<group>"; };
 		413048712DCC48D800F904A2 /* EventMonitor.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = EventMonitor.md; sourceTree = "<group>"; };
+		4135F5B32DDC289C0087FFC8 /* CachedResponseHandler.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CachedResponseHandler.md; sourceTree = "<group>"; };
+		4135F5B92DDC2F680087FFC8 /* NetworkReachabilityManager.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = NetworkReachabilityManager.md; sourceTree = "<group>"; };
+		4135F5BF2DDC64B20087FFC8 /* Validation.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Validation.md; sourceTree = "<group>"; };
 		4196936122FA1E05001EA5D5 /* Result+Alamofire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Alamofire.swift"; sourceTree = "<group>"; };
 		41A953292DCB0F64004078C5 /* Protected.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Protected.md; sourceTree = "<group>"; };
 		41A9532F2DCB430D004078C5 /* Session.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Session.md; sourceTree = "<group>"; };
@@ -798,6 +826,8 @@
 		41C66FA62DDB233D00F2AACB /* AlamofireExtended.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AlamofireExtended.md; sourceTree = "<group>"; };
 		41C66FAC2DDB2B6F00F2AACB /* AuthenticationInterceptor.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AuthenticationInterceptor.md; sourceTree = "<group>"; };
 		41D32EFB2DD48D9D00024056 /* RequestTaskMap.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = RequestTaskMap.md; sourceTree = "<group>"; };
+		41DDE4D82DDDAB0600BBAF09 /* URLEncodedFormEncoder.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = URLEncodedFormEncoder.md; sourceTree = "<group>"; };
+		41DDE4DE2DDDC76A00BBAF09 /* RedirectHandler.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = RedirectHandler.md; sourceTree = "<group>"; };
 		4C0B58381B747A4400C0B99C /* ResponseSerializationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseSerializationTests.swift; sourceTree = "<group>"; };
 		4C0CB630220BC70300604EDC /* RequestInterceptorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestInterceptorTests.swift; sourceTree = "<group>"; };
 		4C0CB640220CA89400604EDC /* URLRequest+Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLRequest+Alamofire.swift"; sourceTree = "<group>"; };
@@ -1073,6 +1103,7 @@
 				4C67D1352454B12A00CBA725 /* AuthenticationInterceptor.swift */,
 				41C66FAC2DDB2B6F00F2AACB /* AuthenticationInterceptor.md */,
 				4C4466EA21F8F5D800AC9703 /* CachedResponseHandler.swift */,
+				4135F5B32DDC289C0087FFC8 /* CachedResponseHandler.md */,
 				318DD40E2439780500963291 /* Combine.swift */,
 				31B3DE3A25C11CEA00760641 /* Concurrency.swift */,
 				3111CE8720A77843008315E2 /* EventMonitor.swift */,
@@ -1080,14 +1111,18 @@
 				4C23EB421B327C5B0090E0BC /* MultipartFormData.swift */,
 				311B198F20B0D3B40036823B /* MultipartUpload.swift */,
 				4C3D00531C66A63000D1F709 /* NetworkReachabilityManager.swift */,
+				4135F5B92DDC2F680087FFC8 /* NetworkReachabilityManager.md */,
 				4C0CB645220CA8A400604EDC /* RedirectHandler.swift */,
+				41DDE4DE2DDDC76A00BBAF09 /* RedirectHandler.md */,
 				3165407229AEBC0400C9BE08 /* RequestCompression.swift */,
 				4C256A0521EEB69000AD5D87 /* RequestInterceptor.swift */,
 				4CDE2C451AF89FF300BABAE5 /* ResponseSerialization.swift */,
 				4C256A1921F1449C00AD5D87 /* RetryPolicy.swift */,
 				4C811F8C1B51856D00E0F59A /* ServerTrustEvaluation.swift */,
 				31FB2F8622C828D8007FD6D5 /* URLEncodedFormEncoder.swift */,
+				41DDE4D82DDDAB0600BBAF09 /* URLEncodedFormEncoder.md */,
 				4CDE2C421AF89F0900BABAE5 /* Validation.swift */,
+				4135F5BF2DDC64B20087FFC8 /* Validation.md */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -1652,15 +1687,20 @@
 				411758202DD2EF9500CEAC50 /* DataRequest.md in Resources */,
 				41C66F962DDB189A00F2AACB /* ParameterEncoder.md in Resources */,
 				413048722DCC48D800F904A2 /* EventMonitor.md in Resources */,
+				4135F5BB2DDC2F680087FFC8 /* NetworkReachabilityManager.md in Resources */,
 				41C66F9C2DDB18BD00F2AACB /* ParameterEncoding.md in Resources */,
+				41DDE4E22DDDC76A00BBAF09 /* RedirectHandler.md in Resources */,
 				41A953382DCB49DE004078C5 /* 流程.md in Resources */,
 				41AA07B12DD1F31E00EB1F0C /* Request.md in Resources */,
+				4135F5C12DDC64B20087FFC8 /* Validation.md in Resources */,
 				41C66FAA2DDB233D00F2AACB /* AlamofireExtended.md in Resources */,
 				31BC5E7F2B7E9D730069BDEF /* PrivacyInfo.xcprivacy in Resources */,
 				41A953402DCB5B84004078C5 /* SessionDelegate.md in Resources */,
 				41D32F002DD48D9D00024056 /* RequestTaskMap.md in Resources */,
 				41C66FAD2DDB2B6F00F2AACB /* AuthenticationInterceptor.md in Resources */,
+				41DDE4DD2DDDAB0600BBAF09 /* URLEncodedFormEncoder.md in Resources */,
 				4117B7572DD5B901002225CC /* Response.md in Resources */,
+				4135F5B42DDC289C0087FFC8 /* CachedResponseHandler.md in Resources */,
 				41A9532D2DCB0F64004078C5 /* Protected.md in Resources */,
 				41A953312DCB430D004078C5 /* Session.md in Resources */,
 				41C66FA52DDB1CB400F2AACB /* HTTPHeaders.md in Resources */,
@@ -1712,15 +1752,20 @@
 				411758222DD2EF9500CEAC50 /* DataRequest.md in Resources */,
 				41C66F992DDB189A00F2AACB /* ParameterEncoder.md in Resources */,
 				413048742DCC48D800F904A2 /* EventMonitor.md in Resources */,
+				4135F5BD2DDC2F680087FFC8 /* NetworkReachabilityManager.md in Resources */,
 				41C66F9F2DDB18BD00F2AACB /* ParameterEncoding.md in Resources */,
+				41DDE4DF2DDDC76A00BBAF09 /* RedirectHandler.md in Resources */,
 				41A953392DCB49DE004078C5 /* 流程.md in Resources */,
 				41AA07B02DD1F31E00EB1F0C /* Request.md in Resources */,
+				4135F5C32DDC64B20087FFC8 /* Validation.md in Resources */,
 				41C66FA82DDB233D00F2AACB /* AlamofireExtended.md in Resources */,
 				31BC5E7D2B7E9D660069BDEF /* PrivacyInfo.xcprivacy in Resources */,
 				41A9533C2DCB5B84004078C5 /* SessionDelegate.md in Resources */,
 				41D32EFD2DD48D9D00024056 /* RequestTaskMap.md in Resources */,
 				41C66FAF2DDB2B7000F2AACB /* AuthenticationInterceptor.md in Resources */,
+				41DDE4DC2DDDAB0600BBAF09 /* URLEncodedFormEncoder.md in Resources */,
 				4117B7592DD5B901002225CC /* Response.md in Resources */,
+				4135F5B82DDC289C0087FFC8 /* CachedResponseHandler.md in Resources */,
 				41A9532C2DCB0F64004078C5 /* Protected.md in Resources */,
 				41A953322DCB430D004078C5 /* Session.md in Resources */,
 				41C66FA32DDB1CB400F2AACB /* HTTPHeaders.md in Resources */,
@@ -1772,15 +1817,20 @@
 				411758212DD2EF9500CEAC50 /* DataRequest.md in Resources */,
 				41C66F952DDB189A00F2AACB /* ParameterEncoder.md in Resources */,
 				413048752DCC48D800F904A2 /* EventMonitor.md in Resources */,
+				4135F5BA2DDC2F680087FFC8 /* NetworkReachabilityManager.md in Resources */,
 				41C66F9D2DDB18BD00F2AACB /* ParameterEncoding.md in Resources */,
+				41DDE4E12DDDC76A00BBAF09 /* RedirectHandler.md in Resources */,
 				41A9533A2DCB49DE004078C5 /* 流程.md in Resources */,
 				41AA07AE2DD1F31E00EB1F0C /* Request.md in Resources */,
+				4135F5C22DDC64B20087FFC8 /* Validation.md in Resources */,
 				41C66FA72DDB233D00F2AACB /* AlamofireExtended.md in Resources */,
 				31BC5E7C2B7E9D5F0069BDEF /* PrivacyInfo.xcprivacy in Resources */,
 				41A9533D2DCB5B84004078C5 /* SessionDelegate.md in Resources */,
 				41D32EFC2DD48D9D00024056 /* RequestTaskMap.md in Resources */,
 				41C66FB02DDB2B7000F2AACB /* AuthenticationInterceptor.md in Resources */,
+				41DDE4DB2DDDAB0600BBAF09 /* URLEncodedFormEncoder.md in Resources */,
 				4117B7582DD5B901002225CC /* Response.md in Resources */,
+				4135F5B52DDC289C0087FFC8 /* CachedResponseHandler.md in Resources */,
 				41A9532A2DCB0F64004078C5 /* Protected.md in Resources */,
 				41A953342DCB430D004078C5 /* Session.md in Resources */,
 				41C66FA12DDB1CB400F2AACB /* HTTPHeaders.md in Resources */,
@@ -1794,15 +1844,20 @@
 				4117581E2DD2EF9500CEAC50 /* DataRequest.md in Resources */,
 				41C66F982DDB189A00F2AACB /* ParameterEncoder.md in Resources */,
 				413048732DCC48D800F904A2 /* EventMonitor.md in Resources */,
+				4135F5BE2DDC2F680087FFC8 /* NetworkReachabilityManager.md in Resources */,
 				41C66F9B2DDB18BD00F2AACB /* ParameterEncoding.md in Resources */,
+				41DDE4E32DDDC76A00BBAF09 /* RedirectHandler.md in Resources */,
 				41A953362DCB49DE004078C5 /* 流程.md in Resources */,
 				41AA07AF2DD1F31E00EB1F0C /* Request.md in Resources */,
+				4135F5C02DDC64B20087FFC8 /* Validation.md in Resources */,
 				41C66FA92DDB233D00F2AACB /* AlamofireExtended.md in Resources */,
 				31BC5E7E2B7E9D6D0069BDEF /* PrivacyInfo.xcprivacy in Resources */,
 				41A9533E2DCB5B84004078C5 /* SessionDelegate.md in Resources */,
 				41D32EFF2DD48D9D00024056 /* RequestTaskMap.md in Resources */,
 				41C66FAE2DDB2B6F00F2AACB /* AuthenticationInterceptor.md in Resources */,
+				41DDE4D92DDDAB0600BBAF09 /* URLEncodedFormEncoder.md in Resources */,
 				4117B75B2DD5B901002225CC /* Response.md in Resources */,
+				4135F5B72DDC289C0087FFC8 /* CachedResponseHandler.md in Resources */,
 				41A9532E2DCB0F64004078C5 /* Protected.md in Resources */,
 				41A953302DCB430D004078C5 /* Session.md in Resources */,
 				41C66FA22DDB1CB400F2AACB /* HTTPHeaders.md in Resources */,
@@ -1816,15 +1871,20 @@
 				4117581F2DD2EF9500CEAC50 /* DataRequest.md in Resources */,
 				41C66F972DDB189A00F2AACB /* ParameterEncoder.md in Resources */,
 				413048762DCC48D800F904A2 /* EventMonitor.md in Resources */,
+				4135F5BC2DDC2F680087FFC8 /* NetworkReachabilityManager.md in Resources */,
 				41C66F9E2DDB18BD00F2AACB /* ParameterEncoding.md in Resources */,
+				41DDE4E02DDDC76A00BBAF09 /* RedirectHandler.md in Resources */,
 				41A953372DCB49DE004078C5 /* 流程.md in Resources */,
 				41AA07B22DD1F31E00EB1F0C /* Request.md in Resources */,
+				4135F5C42DDC64B20087FFC8 /* Validation.md in Resources */,
 				41C66FAB2DDB233D00F2AACB /* AlamofireExtended.md in Resources */,
 				31BC5E7B2B7E9D520069BDEF /* PrivacyInfo.xcprivacy in Resources */,
 				41A9533F2DCB5B84004078C5 /* SessionDelegate.md in Resources */,
 				41D32EFE2DD48D9D00024056 /* RequestTaskMap.md in Resources */,
 				41C66FB12DDB2B7000F2AACB /* AuthenticationInterceptor.md in Resources */,
+				41DDE4DA2DDDAB0600BBAF09 /* URLEncodedFormEncoder.md in Resources */,
 				4117B75A2DD5B901002225CC /* Response.md in Resources */,
+				4135F5B62DDC289C0087FFC8 /* CachedResponseHandler.md in Resources */,
 				41A9532B2DCB0F64004078C5 /* Protected.md in Resources */,
 				41A953332DCB430D004078C5 /* Session.md in Resources */,
 				41C66FA42DDB1CB400F2AACB /* HTTPHeaders.md in Resources */,

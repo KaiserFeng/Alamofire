@@ -32,6 +32,10 @@ extension Request {
     /// Used to represent whether a validation succeeded or failed.
     public typealias ValidationResult = Result<Void, any(Error & Sendable)>
 
+    /// 不可变状态设计：
+    /// 1、使用值类型（strunct）
+    /// 2、属性使用 let 声明为常量
+    /// 3、避免可变状态
     fileprivate struct MIMEType {
         let type: String
         let subtype: String
@@ -77,6 +81,7 @@ extension Request {
     }
 
     // MARK: Status Code
+    /// 验证码验证
 
     fileprivate func validate<S: Sequence>(statusCode acceptableStatusCodes: S,
                                            response: HTTPURLResponse)
@@ -91,6 +96,7 @@ extension Request {
     }
 
     // MARK: Content Type
+    /// 内容验证
 
     fileprivate func validate<S: Sequence>(contentType acceptableContentTypes: S,
                                            response: HTTPURLResponse,
