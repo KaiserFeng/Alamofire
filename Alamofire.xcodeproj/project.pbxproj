@@ -490,6 +490,31 @@
 		4135F5C22DDC64B20087FFC8 /* Validation.md in Resources */ = {isa = PBXBuildFile; fileRef = 4135F5BF2DDC64B20087FFC8 /* Validation.md */; };
 		4135F5C32DDC64B20087FFC8 /* Validation.md in Resources */ = {isa = PBXBuildFile; fileRef = 4135F5BF2DDC64B20087FFC8 /* Validation.md */; };
 		4135F5C42DDC64B20087FFC8 /* Validation.md in Resources */ = {isa = PBXBuildFile; fileRef = 4135F5BF2DDC64B20087FFC8 /* Validation.md */; };
+		415AE14F2DDEBB21001606ED /* RequestInterceptor.md in Resources */ = {isa = PBXBuildFile; fileRef = 415AE14E2DDEBB21001606ED /* RequestInterceptor.md */; };
+		415AE1502DDEBB21001606ED /* RequestInterceptor.md in Resources */ = {isa = PBXBuildFile; fileRef = 415AE14E2DDEBB21001606ED /* RequestInterceptor.md */; };
+		415AE1512DDEBB21001606ED /* RequestInterceptor.md in Resources */ = {isa = PBXBuildFile; fileRef = 415AE14E2DDEBB21001606ED /* RequestInterceptor.md */; };
+		415AE1522DDEBB21001606ED /* RequestInterceptor.md in Resources */ = {isa = PBXBuildFile; fileRef = 415AE14E2DDEBB21001606ED /* RequestInterceptor.md */; };
+		415AE1532DDEBB21001606ED /* RequestInterceptor.md in Resources */ = {isa = PBXBuildFile; fileRef = 415AE14E2DDEBB21001606ED /* RequestInterceptor.md */; };
+		415AE1552DDECBB6001606ED /* RequestCompression.md in Resources */ = {isa = PBXBuildFile; fileRef = 415AE1542DDECBB6001606ED /* RequestCompression.md */; };
+		415AE1562DDECBB6001606ED /* RequestCompression.md in Resources */ = {isa = PBXBuildFile; fileRef = 415AE1542DDECBB6001606ED /* RequestCompression.md */; };
+		415AE1572DDECBB6001606ED /* RequestCompression.md in Resources */ = {isa = PBXBuildFile; fileRef = 415AE1542DDECBB6001606ED /* RequestCompression.md */; };
+		415AE1582DDECBB6001606ED /* RequestCompression.md in Resources */ = {isa = PBXBuildFile; fileRef = 415AE1542DDECBB6001606ED /* RequestCompression.md */; };
+		415AE1592DDECBB6001606ED /* RequestCompression.md in Resources */ = {isa = PBXBuildFile; fileRef = 415AE1542DDECBB6001606ED /* RequestCompression.md */; };
+		415AE15B2DDED3F1001606ED /* RetryPolicy.md in Resources */ = {isa = PBXBuildFile; fileRef = 415AE15A2DDED3F1001606ED /* RetryPolicy.md */; };
+		415AE15C2DDED3F1001606ED /* RetryPolicy.md in Resources */ = {isa = PBXBuildFile; fileRef = 415AE15A2DDED3F1001606ED /* RetryPolicy.md */; };
+		415AE15D2DDED3F1001606ED /* RetryPolicy.md in Resources */ = {isa = PBXBuildFile; fileRef = 415AE15A2DDED3F1001606ED /* RetryPolicy.md */; };
+		415AE15E2DDED3F1001606ED /* RetryPolicy.md in Resources */ = {isa = PBXBuildFile; fileRef = 415AE15A2DDED3F1001606ED /* RetryPolicy.md */; };
+		415AE15F2DDED3F1001606ED /* RetryPolicy.md in Resources */ = {isa = PBXBuildFile; fileRef = 415AE15A2DDED3F1001606ED /* RetryPolicy.md */; };
+		415AE1612DDF05A7001606ED /* MultipartFormData.md in Resources */ = {isa = PBXBuildFile; fileRef = 415AE1602DDF05A7001606ED /* MultipartFormData.md */; };
+		415AE1622DDF05A7001606ED /* MultipartFormData.md in Resources */ = {isa = PBXBuildFile; fileRef = 415AE1602DDF05A7001606ED /* MultipartFormData.md */; };
+		415AE1632DDF05A7001606ED /* MultipartFormData.md in Resources */ = {isa = PBXBuildFile; fileRef = 415AE1602DDF05A7001606ED /* MultipartFormData.md */; };
+		415AE1642DDF05A7001606ED /* MultipartFormData.md in Resources */ = {isa = PBXBuildFile; fileRef = 415AE1602DDF05A7001606ED /* MultipartFormData.md */; };
+		415AE1652DDF05A7001606ED /* MultipartFormData.md in Resources */ = {isa = PBXBuildFile; fileRef = 415AE1602DDF05A7001606ED /* MultipartFormData.md */; };
+		415AE1672DDF0B21001606ED /* MultipartUpload.md in Resources */ = {isa = PBXBuildFile; fileRef = 415AE1662DDF0B21001606ED /* MultipartUpload.md */; };
+		415AE1682DDF0B21001606ED /* MultipartUpload.md in Resources */ = {isa = PBXBuildFile; fileRef = 415AE1662DDF0B21001606ED /* MultipartUpload.md */; };
+		415AE1692DDF0B22001606ED /* MultipartUpload.md in Resources */ = {isa = PBXBuildFile; fileRef = 415AE1662DDF0B21001606ED /* MultipartUpload.md */; };
+		415AE16A2DDF0B22001606ED /* MultipartUpload.md in Resources */ = {isa = PBXBuildFile; fileRef = 415AE1662DDF0B21001606ED /* MultipartUpload.md */; };
+		415AE16B2DDF0B22001606ED /* MultipartUpload.md in Resources */ = {isa = PBXBuildFile; fileRef = 415AE1662DDF0B21001606ED /* MultipartUpload.md */; };
 		4196936222FA1E05001EA5D5 /* Result+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4196936122FA1E05001EA5D5 /* Result+Alamofire.swift */; };
 		4196936322FA1E05001EA5D5 /* Result+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4196936122FA1E05001EA5D5 /* Result+Alamofire.swift */; };
 		4196936422FA1E05001EA5D5 /* Result+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4196936122FA1E05001EA5D5 /* Result+Alamofire.swift */; };
@@ -814,6 +839,11 @@
 		4135F5B32DDC289C0087FFC8 /* CachedResponseHandler.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CachedResponseHandler.md; sourceTree = "<group>"; };
 		4135F5B92DDC2F680087FFC8 /* NetworkReachabilityManager.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = NetworkReachabilityManager.md; sourceTree = "<group>"; };
 		4135F5BF2DDC64B20087FFC8 /* Validation.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Validation.md; sourceTree = "<group>"; };
+		415AE14E2DDEBB21001606ED /* RequestInterceptor.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = RequestInterceptor.md; sourceTree = "<group>"; };
+		415AE1542DDECBB6001606ED /* RequestCompression.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = RequestCompression.md; sourceTree = "<group>"; };
+		415AE15A2DDED3F1001606ED /* RetryPolicy.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = RetryPolicy.md; sourceTree = "<group>"; };
+		415AE1602DDF05A7001606ED /* MultipartFormData.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = MultipartFormData.md; sourceTree = "<group>"; };
+		415AE1662DDF0B21001606ED /* MultipartUpload.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = MultipartUpload.md; sourceTree = "<group>"; };
 		4196936122FA1E05001EA5D5 /* Result+Alamofire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Alamofire.swift"; sourceTree = "<group>"; };
 		41A953292DCB0F64004078C5 /* Protected.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Protected.md; sourceTree = "<group>"; };
 		41A9532F2DCB430D004078C5 /* Session.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Session.md; sourceTree = "<group>"; };
@@ -1109,15 +1139,20 @@
 				3111CE8720A77843008315E2 /* EventMonitor.swift */,
 				413048712DCC48D800F904A2 /* EventMonitor.md */,
 				4C23EB421B327C5B0090E0BC /* MultipartFormData.swift */,
+				415AE1602DDF05A7001606ED /* MultipartFormData.md */,
 				311B198F20B0D3B40036823B /* MultipartUpload.swift */,
+				415AE1662DDF0B21001606ED /* MultipartUpload.md */,
 				4C3D00531C66A63000D1F709 /* NetworkReachabilityManager.swift */,
 				4135F5B92DDC2F680087FFC8 /* NetworkReachabilityManager.md */,
 				4C0CB645220CA8A400604EDC /* RedirectHandler.swift */,
 				41DDE4DE2DDDC76A00BBAF09 /* RedirectHandler.md */,
 				3165407229AEBC0400C9BE08 /* RequestCompression.swift */,
+				415AE1542DDECBB6001606ED /* RequestCompression.md */,
 				4C256A0521EEB69000AD5D87 /* RequestInterceptor.swift */,
+				415AE14E2DDEBB21001606ED /* RequestInterceptor.md */,
 				4CDE2C451AF89FF300BABAE5 /* ResponseSerialization.swift */,
 				4C256A1921F1449C00AD5D87 /* RetryPolicy.swift */,
+				415AE15A2DDED3F1001606ED /* RetryPolicy.md */,
 				4C811F8C1B51856D00E0F59A /* ServerTrustEvaluation.swift */,
 				31FB2F8622C828D8007FD6D5 /* URLEncodedFormEncoder.swift */,
 				41DDE4D82DDDAB0600BBAF09 /* URLEncodedFormEncoder.md */,
@@ -1689,9 +1724,14 @@
 				413048722DCC48D800F904A2 /* EventMonitor.md in Resources */,
 				4135F5BB2DDC2F680087FFC8 /* NetworkReachabilityManager.md in Resources */,
 				41C66F9C2DDB18BD00F2AACB /* ParameterEncoding.md in Resources */,
+				415AE1572DDECBB6001606ED /* RequestCompression.md in Resources */,
+				415AE1692DDF0B22001606ED /* MultipartUpload.md in Resources */,
+				415AE15D2DDED3F1001606ED /* RetryPolicy.md in Resources */,
 				41DDE4E22DDDC76A00BBAF09 /* RedirectHandler.md in Resources */,
+				415AE1512DDEBB21001606ED /* RequestInterceptor.md in Resources */,
 				41A953382DCB49DE004078C5 /* 流程.md in Resources */,
 				41AA07B12DD1F31E00EB1F0C /* Request.md in Resources */,
+				415AE1612DDF05A7001606ED /* MultipartFormData.md in Resources */,
 				4135F5C12DDC64B20087FFC8 /* Validation.md in Resources */,
 				41C66FAA2DDB233D00F2AACB /* AlamofireExtended.md in Resources */,
 				31BC5E7F2B7E9D730069BDEF /* PrivacyInfo.xcprivacy in Resources */,
@@ -1754,9 +1794,14 @@
 				413048742DCC48D800F904A2 /* EventMonitor.md in Resources */,
 				4135F5BD2DDC2F680087FFC8 /* NetworkReachabilityManager.md in Resources */,
 				41C66F9F2DDB18BD00F2AACB /* ParameterEncoding.md in Resources */,
+				415AE1552DDECBB6001606ED /* RequestCompression.md in Resources */,
+				415AE16A2DDF0B22001606ED /* MultipartUpload.md in Resources */,
+				415AE15B2DDED3F1001606ED /* RetryPolicy.md in Resources */,
 				41DDE4DF2DDDC76A00BBAF09 /* RedirectHandler.md in Resources */,
+				415AE1502DDEBB21001606ED /* RequestInterceptor.md in Resources */,
 				41A953392DCB49DE004078C5 /* 流程.md in Resources */,
 				41AA07B02DD1F31E00EB1F0C /* Request.md in Resources */,
+				415AE1642DDF05A7001606ED /* MultipartFormData.md in Resources */,
 				4135F5C32DDC64B20087FFC8 /* Validation.md in Resources */,
 				41C66FA82DDB233D00F2AACB /* AlamofireExtended.md in Resources */,
 				31BC5E7D2B7E9D660069BDEF /* PrivacyInfo.xcprivacy in Resources */,
@@ -1819,9 +1864,14 @@
 				413048752DCC48D800F904A2 /* EventMonitor.md in Resources */,
 				4135F5BA2DDC2F680087FFC8 /* NetworkReachabilityManager.md in Resources */,
 				41C66F9D2DDB18BD00F2AACB /* ParameterEncoding.md in Resources */,
+				415AE1582DDECBB6001606ED /* RequestCompression.md in Resources */,
+				415AE1672DDF0B21001606ED /* MultipartUpload.md in Resources */,
+				415AE15C2DDED3F1001606ED /* RetryPolicy.md in Resources */,
 				41DDE4E12DDDC76A00BBAF09 /* RedirectHandler.md in Resources */,
+				415AE14F2DDEBB21001606ED /* RequestInterceptor.md in Resources */,
 				41A9533A2DCB49DE004078C5 /* 流程.md in Resources */,
 				41AA07AE2DD1F31E00EB1F0C /* Request.md in Resources */,
+				415AE1652DDF05A7001606ED /* MultipartFormData.md in Resources */,
 				4135F5C22DDC64B20087FFC8 /* Validation.md in Resources */,
 				41C66FA72DDB233D00F2AACB /* AlamofireExtended.md in Resources */,
 				31BC5E7C2B7E9D5F0069BDEF /* PrivacyInfo.xcprivacy in Resources */,
@@ -1846,9 +1896,14 @@
 				413048732DCC48D800F904A2 /* EventMonitor.md in Resources */,
 				4135F5BE2DDC2F680087FFC8 /* NetworkReachabilityManager.md in Resources */,
 				41C66F9B2DDB18BD00F2AACB /* ParameterEncoding.md in Resources */,
+				415AE1592DDECBB6001606ED /* RequestCompression.md in Resources */,
+				415AE1682DDF0B21001606ED /* MultipartUpload.md in Resources */,
+				415AE15F2DDED3F1001606ED /* RetryPolicy.md in Resources */,
 				41DDE4E32DDDC76A00BBAF09 /* RedirectHandler.md in Resources */,
+				415AE1532DDEBB21001606ED /* RequestInterceptor.md in Resources */,
 				41A953362DCB49DE004078C5 /* 流程.md in Resources */,
 				41AA07AF2DD1F31E00EB1F0C /* Request.md in Resources */,
+				415AE1622DDF05A7001606ED /* MultipartFormData.md in Resources */,
 				4135F5C02DDC64B20087FFC8 /* Validation.md in Resources */,
 				41C66FA92DDB233D00F2AACB /* AlamofireExtended.md in Resources */,
 				31BC5E7E2B7E9D6D0069BDEF /* PrivacyInfo.xcprivacy in Resources */,
@@ -1873,9 +1928,14 @@
 				413048762DCC48D800F904A2 /* EventMonitor.md in Resources */,
 				4135F5BC2DDC2F680087FFC8 /* NetworkReachabilityManager.md in Resources */,
 				41C66F9E2DDB18BD00F2AACB /* ParameterEncoding.md in Resources */,
+				415AE1562DDECBB6001606ED /* RequestCompression.md in Resources */,
+				415AE16B2DDF0B22001606ED /* MultipartUpload.md in Resources */,
+				415AE15E2DDED3F1001606ED /* RetryPolicy.md in Resources */,
 				41DDE4E02DDDC76A00BBAF09 /* RedirectHandler.md in Resources */,
+				415AE1522DDEBB21001606ED /* RequestInterceptor.md in Resources */,
 				41A953372DCB49DE004078C5 /* 流程.md in Resources */,
 				41AA07B22DD1F31E00EB1F0C /* Request.md in Resources */,
+				415AE1632DDF05A7001606ED /* MultipartFormData.md in Resources */,
 				4135F5C42DDC64B20087FFC8 /* Validation.md in Resources */,
 				41C66FAB2DDB233D00F2AACB /* AlamofireExtended.md in Resources */,
 				31BC5E7B2B7E9D520069BDEF /* PrivacyInfo.xcprivacy in Resources */,

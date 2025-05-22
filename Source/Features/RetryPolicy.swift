@@ -26,6 +26,9 @@ import Foundation
 
 /// A retry policy that retries requests using an exponential backoff for allowed HTTP methods and HTTP status codes
 /// as well as certain types of networking errors.
+/// 支持多种错误类型重试
+/// let retryableHTTPStatusCodes: Set<Int>
+/// let retryableURLErrorCodes: Set<URLError.Code>
 open class RetryPolicy: @unchecked Sendable, RequestInterceptor {
     /// The default retry limit for retry policies.
     public static let defaultRetryLimit: UInt = 2
@@ -305,10 +308,15 @@ open class RetryPolicy: @unchecked Sendable, RequestInterceptor {
         self.retryableURLErrorCodes = retryableURLErrorCodes
     }
 
+    /// 1、模板方法：定义算法骨架
     open func retry(_ request: Request,
                     for session: Session,
                     dueTo error: any Error,
                     completion: @escaping (RetryResult) -> Void) {
+        /// 固定的算法步骤：
+        /// 1、检查重试次数
+        /// 2、调用钩子方法判断是否应该重试
+        /// 3、计算延迟时间
         if request.retryCount < retryLimit, shouldRetry(request: request, dueTo: error) {
             completion(.retryWithDelay(pow(Double(exponentialBackoffBase), Double(request.retryCount)) * exponentialBackoffScale))
         } else {
@@ -323,9 +331,12 @@ open class RetryPolicy: @unchecked Sendable, RequestInterceptor {
     ///     - error:   `Error` encountered while executing the `Request`.
     ///
     /// - Returns:     `Bool` determining whether or not to retry the `Request`.
+    /// 2、钩子方法：允许子类重写的行为
     open func shouldRetry(request: Request, dueTo error: any Error) -> Bool {
+        /// 默认实现的重试判断逻辑
         guard let httpMethod = request.request?.method, retryableHTTPMethods.contains(httpMethod) else { return false }
 
+        /// 检查错误码和错误类型
         if let statusCode = request.response?.statusCode, retryableHTTPStatusCodes.contains(statusCode) {
             return true
         } else {
@@ -377,6 +388,7 @@ extension RequestInterceptor where Self == RetryPolicy {
 /// A retry policy that automatically retries idempotent requests for network connection lost errors. For more
 /// information about retrying network connection lost errors, please refer to Apple's
 /// [technical document](https://developer.apple.com/library/content/qa/qa1941/_index.html).
+/// 固定只处理网络连接丢失
 open class ConnectionLostRetryPolicy: RetryPolicy, @unchecked Sendable {
     /// Creates a `ConnectionLostRetryPolicy` instance from the specified parameters.
     ///
@@ -389,17 +401,23 @@ open class ConnectionLostRetryPolicy: RetryPolicy, @unchecked Sendable {
     ///                              `RetryPolicy.defaultExponentialBackoffScale` by default.
     ///   - retryableHTTPMethods:    The idempotent http methods to retry.
     ///                              `RetryPolicy.defaultRetryableHTTPMethods` by default.
+    /// 通过构造函数特化父类行为
     public init(retryLimit: UInt = RetryPolicy.defaultRetryLimit,
                 exponentialBackoffBase: UInt = RetryPolicy.defaultExponentialBackoffBase,
                 exponentialBackoffScale: Double = RetryPolicy.defaultExponentialBackoffScale,
                 retryableHTTPMethods: Set<HTTPMethod> = RetryPolicy.defaultRetryableHTTPMethods) {
+        /// 特化重试条件
         super.init(retryLimit: retryLimit,
                    exponentialBackoffBase: exponentialBackoffBase,
                    exponentialBackoffScale: exponentialBackoffScale,
                    retryableHTTPMethods: retryableHTTPMethods,
+                   /// 强制设为空 特化：不处理HTTP状态码
                    retryableHTTPStatusCodes: [],
+                   /// 固定只有这一种 特化：只处理网络断开
                    retryableURLErrorCodes: [.networkConnectionLost])
     }
+    
+    /// 可以选择 重写钩子方法，此处子类没有选择重写。
 }
 
 extension RequestInterceptor where Self == ConnectionLostRetryPolicy {

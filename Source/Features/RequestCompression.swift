@@ -38,6 +38,7 @@ import zlib
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
 public struct DeflateRequestCompressor: Sendable, RequestInterceptor {
     /// Type that determines the action taken when the `URLRequest` already has a `Content-Encoding` header.
+    /// 策略模式：通过 DuplicateheaderBehavior 枚举定义不同的压缩策略
     public enum DuplicateHeaderBehavior: Sendable {
         /// Throws a `DuplicateHeaderError`. The default.
         case error
@@ -123,6 +124,7 @@ public struct DeflateRequestCompressor: Sendable, RequestInterceptor {
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
 extension RequestInterceptor where Self == DeflateRequestCompressor {
     /// Create a `DeflateRequestCompressor` with default `duplicateHeaderBehavior` and `shouldCompressBodyData` values.
+    /// 工厂方法：提供静态方法创建压缩器实例
     public static var deflateCompressor: DeflateRequestCompressor {
         DeflateRequestCompressor()
     }

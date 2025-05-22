@@ -262,21 +262,27 @@ open class Interceptor: @unchecked Sendable, RequestInterceptor {
         adapt(urlRequest, for: session, using: adapters, completion: completion)
     }
 
+    /// Adapters 的处理策略：串行处理直到失败
+    /// 所有适配器会顺序执行，直到某个失败或全部成功
     private func adapt(_ urlRequest: URLRequest,
                        for session: Session,
                        using adapters: [any RequestAdapter],
                        completion: @escaping @Sendable (Result<URLRequest, any Error>) -> Void) {
         var pendingAdapters = adapters
 
+        /// 如果没有待处理的适配器，直接返回成功
         guard !pendingAdapters.isEmpty else { completion(.success(urlRequest)); return }
 
         let adapter = pendingAdapters.removeFirst()
 
+        /// 递归处理所有适配器
         adapter.adapt(urlRequest, for: session) { [pendingAdapters] result in
             switch result {
             case let .success(urlRequest):
+                /// 成功则继续处理下一个适配器
                 self.adapt(urlRequest, for: session, using: pendingAdapters, completion: completion)
             case .failure:
+                // 失败则直接返回错误，不再处理后续适配器
                 completion(result)
             }
         }
@@ -315,6 +321,8 @@ open class Interceptor: @unchecked Sendable, RequestInterceptor {
         retry(request, for: session, dueTo: error, using: retriers, completion: completion)
     }
 
+    /// Retries的处理策略：串行处理直到需要重试
+    /// 顺序检查重试器，直到某个触发重试或全部检查完毕
     private func retry(_ request: Request,
                        for session: Session,
                        dueTo error: any Error,
@@ -322,6 +330,7 @@ open class Interceptor: @unchecked Sendable, RequestInterceptor {
                        completion: @escaping @Sendable (RetryResult) -> Void) {
         var pendingRetriers = retriers
 
+        /// 如果没有待处理的重试器，返回不重试
         guard !pendingRetriers.isEmpty else { completion(.doNotRetry); return }
 
         let retrier = pendingRetriers.removeFirst()
@@ -329,9 +338,11 @@ open class Interceptor: @unchecked Sendable, RequestInterceptor {
         retrier.retry(request, for: session, dueTo: error) { [pendingRetriers] result in
             switch result {
             case .retry, .retryWithDelay, .doNotRetryWithError:
+                /// 如果需要重试或有错误，立即返回结果
                 completion(result)
             case .doNotRetry:
                 // Only continue to the next retrier if retry was not triggered and no error was encountered
+                /// 如果不需要重试，则继续检查下一个重试器
                 self.retry(request, for: session, dueTo: error, using: pendingRetriers, completion: completion)
             }
         }

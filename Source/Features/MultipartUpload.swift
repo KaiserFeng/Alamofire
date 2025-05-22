@@ -25,6 +25,7 @@
 import Foundation
 
 /// Internal type which encapsulates a `MultipartFormData` upload.
+/// 大文件上传
 final class MultipartUpload: @unchecked Sendable { // Must be @unchecked due to FileManager not being properly Sendable.
     private let _result = Protected<Result<UploadRequest.Uploadable, any Error>?>(nil)
     var result: Result<UploadRequest.Uploadable, any Error> {
@@ -55,9 +56,11 @@ final class MultipartUpload: @unchecked Sendable { // Must be @unchecked due to 
 
     func build() throws -> UploadRequest.Uploadable {
         let uploadable: UploadRequest.Uploadable
+        /// 策略模式：根据数据大小选择不同的上传策略
         if multipartFormData.contentLength < encodingMemoryThreshold {
             let data = try multipartFormData.read { try $0.encode() }
 
+            /// 小文件策略：直接内存编码
             uploadable = .data(data)
         } else {
             let tempDirectoryURL = fileManager.temporaryDirectory
@@ -75,6 +78,7 @@ final class MultipartUpload: @unchecked Sendable { // Must be @unchecked due to 
                 throw error
             }
 
+            /// 大文件策略：写入临时文件
             uploadable = .file(fileURL, shouldRemove: true)
         }
 

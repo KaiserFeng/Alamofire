@@ -49,8 +49,11 @@ open class MultipartFormData {
         static let crlf = "\r\n"
     }
 
+    /// HTTP 规范要求
+    /// Boundary 用于分隔不同表单数据部分，防止数据混淆
     enum BoundaryGenerator {
         enum BoundaryType {
+            /// 开始边界，中间边界，结束边界
             case initial, encapsulated, final
         }
 
@@ -317,6 +320,7 @@ open class MultipartFormData {
     ///
     /// - Returns: The encoded `Data`, if encoding is successful.
     /// - Throws:  An `AFError` if encoding encounters an error.
+    /// 小数据量使用
     public func encode() throws -> Data {
         if let bodyPartError {
             throw bodyPartError
@@ -342,6 +346,7 @@ open class MultipartFormData {
     ///
     /// - Parameter fileURL: File `URL` to which to write the form data.
     /// - Throws:            An `AFError` if encoding encounters an error.
+    /// 大数据量使用
     public func writeEncodedData(to fileURL: URL) throws {
         if let bodyPartError {
             throw bodyPartError
