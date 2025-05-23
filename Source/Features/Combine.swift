@@ -31,6 +31,10 @@ import Foundation
 // MARK: - DataRequest / UploadRequest
 
 /// A Combine `Publisher` that publishes the `DataResponse<Value, AFError>` of the provided `DataRequest`.
+/// DataResponsePublisher 是一个 Combine Publisher
+/// 用于发布 DataRequest 的响应结果
+/// 支持多种数据类型的序列化（Data、String、Decodable 等）
+/// 提供同步和异步处理方式
 @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
 public struct DataResponsePublisher<Value: Sendable>: Publisher {
     public typealias Output = DataResponse<Value, AFError>
@@ -132,12 +136,13 @@ extension DataResponsePublisher where Value == Data? {
 
 extension DataRequest {
     /// Creates a `DataResponsePublisher` for this instance using the given `ResponseSerializer` and `DispatchQueue`.
+    /// 创建数据响应发布器
     ///
     /// - Parameters:
-    ///   - serializer: `ResponseSerializer` used to serialize response `Data`.
-    ///   - queue:      `DispatchQueue` on which the `DataResponse` will be published. `.main` by default.
+    ///   - serializer: `ResponseSerializer` used to serialize response `Data`.  响应序列化器，用于处理返回数据
+    ///   - queue:      `DispatchQueue` on which the `DataResponse` will be published. `.main` by default.  响应处理队列，默认为主队列
     ///
-    /// - Returns:      The `DataResponsePublisher`.
+    /// - Returns:      The `DataResponsePublisher`. 实例
     @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
     public func publishResponse<Serializer: ResponseSerializer, T>(using serializer: Serializer, on queue: DispatchQueue = .main) -> DataResponsePublisher<T>
         where Serializer.SerializedObject == T {
@@ -214,20 +219,21 @@ extension DataRequest {
 
     /// Creates a `DataResponsePublisher` for this instance and uses a `DecodableResponseSerializer` to serialize the
     /// response.
+    /// 创建解码数据发布器
     ///
     /// - Parameters:
     ///   - type:                `Decodable` type to which to decode response `Data`. Inferred from the context by
-    ///                          default.
-    ///   - queue:               `DispatchQueue` on which the `DataResponse` will be published. `.main` by default.
+    ///                          default.  解码的目标类型
+    ///   - queue:               `DispatchQueue` on which the `DataResponse` will be published. `.main` by default.  处理队列
     ///   - preprocessor:        `DataPreprocessor` which filters the `Data` before serialization.
     ///                          `PassthroughPreprocessor()` by default.
-    ///   - decoder:             `DataDecoder` instance used to decode response `Data`. `JSONDecoder()` by default.
+    ///   - decoder:             `DataDecoder` instance used to decode response `Data`. `JSONDecoder()` by default.  JSON 解码器
     ///   - emptyResponseCodes:  `Set<Int>` of HTTP status codes for which empty responses are allowed. `[204, 205]` by
     ///                          default.
     ///   - emptyRequestMethods: `Set<HTTPMethod>` of `HTTPMethod`s for which empty responses are allowed, regardless of
     ///                          status code. `[.head]` by default.
     ///
-    /// - Returns:               The `DataResponsePublisher`.
+    /// - Returns:               The `DataResponsePublisher`. 包含解码后数据的发布器
     @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
     public func publishDecodable<T: Decodable>(type: T.Type = T.self,
                                                queue: DispatchQueue = .main,
@@ -254,6 +260,10 @@ extension DataRequest {
 }
 
 // A Combine `Publisher` that publishes a sequence of `Stream<Value, AFError>` values received by the provided `DataStreamRequest`.
+/// 用于处理流式数据请求的响应
+/// 支持实时数据流处理
+/// 可以自定义数据序列化方式
+/// 提供流式数据的转换和过滤功能
 @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
 public struct DataStreamPublisher<Value: Sendable>: Publisher {
     public typealias Output = DataStreamRequest.Stream<Value, AFError>
@@ -627,6 +637,10 @@ extension DownloadRequest {
     }
 }
 
+/// 用于处理文件下载请求的响应
+/// 支持文件下载进度追踪
+/// 提供下载完成后的文件处理
+/// 支持多种文件处理方式
 @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
 extension DownloadResponsePublisher where Value == URL? {
     /// Creates an instance which publishes a `DownloadResponse<URL?, AFError>` value without serialization.
