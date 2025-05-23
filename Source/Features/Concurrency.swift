@@ -22,6 +22,8 @@
 //  THE SOFTWARE.
 //
 
+/// 主要解决的是如何将传统的回调式网络请求转换为现代 Swift 并发模型。
+
 #if canImport(_Concurrency)
 
 import Foundation
