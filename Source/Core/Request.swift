@@ -908,14 +908,16 @@ public class Request: @unchecked Sendable {
     }
 
     /// Sets a closure to be called periodically during the lifecycle of the instance as data is read from the server.
+    /// 设置下载进度回调闭包，用于监控数据从服务器读取的过程
     ///
     /// - Note: Only the last closure provided is used.
+    /// 只有最后设置的闭包会被使用
     ///
     /// - Parameters:
-    ///   - queue:   The `DispatchQueue` to execute the closure on. `.main` by default.
-    ///   - closure: The closure to be executed periodically as data is read from the server.
+    ///   - queue:   The `DispatchQueue` to execute the closure on. `.main` by default.     执行闭包的队列，默认为主队列
+    ///   - closure: The closure to be executed periodically as data is read from the server.       当数据从服务器读取时周期性调用的闭包
     ///
-    /// - Returns:   The instance.
+    /// - Returns:   The instance.      请求实例本身，支持链式调用
     @preconcurrency
     @discardableResult
     public func downloadProgress(queue: DispatchQueue = .main, closure: @escaping ProgressHandler) -> Self {
@@ -925,14 +927,16 @@ public class Request: @unchecked Sendable {
     }
 
     /// Sets a closure to be called periodically during the lifecycle of the instance as data is sent to the server.
+    /// 设置上传进度回调闭包，用于监控数据向服务器发送的过程
     ///
     /// - Note: Only the last closure provided is used.
+    /// 只有最后设置的闭包会被使用
     ///
     /// - Parameters:
-    ///   - queue:   The `DispatchQueue` to execute the closure on. `.main` by default.
-    ///   - closure: The closure to be executed periodically as data is sent to the server.
+    ///   - queue:   The `DispatchQueue` to execute the closure on. `.main` by default.     执行闭包的队列，默认为主队列
+    ///   - closure: The closure to be executed periodically as data is sent to the server.     当数据向服务器发送时周期性调用的闭包
     ///
-    /// - Returns:   The instance.
+    /// - Returns:   The instance.      请求实例本身，支持链式调用
     @preconcurrency
     @discardableResult
     public func uploadProgress(queue: DispatchQueue = .main, closure: @escaping ProgressHandler) -> Self {
@@ -944,12 +948,14 @@ public class Request: @unchecked Sendable {
     // MARK: Redirects
 
     /// Sets the redirect handler for the instance which will be used if a redirect response is encountered.
+    /// 设置重定向处理器，用于处理收到重定向 响应时的行为
     ///
     /// - Note: Attempting to set the redirect handler more than once is a logic error and will crash.
+    /// 多次设置重定向处理器会导致程序崩溃
     ///
-    /// - Parameter handler: The `RedirectHandler`.
+    /// - Parameter handler: The `RedirectHandler`.     重定向处理器
     ///
-    /// - Returns:           The instance.
+    /// - Returns:           The instance.      请求实例本身，支持链式调用
     @preconcurrency
     @discardableResult
     public func redirect(using handler: any RedirectHandler) -> Self {
@@ -964,10 +970,12 @@ public class Request: @unchecked Sendable {
     // MARK: Cached Responses
 
     /// Sets the cached response handler for the `Request` which will be used when attempting to cache a response.
+    /// 设置缓存响应处理器，用于处理响应的缓存策略
     ///
     /// - Note: Attempting to set the cache handler more than once is a logic error and will crash.
+    /// 多次设置缓存处理器会导致程序崩溃
     ///
-    /// - Parameter handler: The `CachedResponseHandler`.
+    /// - Parameter handler: The `CachedResponseHandler`.       缓存响应处理器
     ///
     /// - Returns:           The instance.
     @preconcurrency
@@ -1251,9 +1259,11 @@ extension Request {
 
 /// Protocol abstraction for `Request`'s communication back to the `SessionDelegate`.
 /// 该协议 定义了 Request 与 SessionDelegate 之间的通信接口
+/// 通过该协议实现请求状态管理、生命周期控制和重试机制
 public protocol RequestDelegate: AnyObject, Sendable {
     /// `URLSessionConfiguration` used to create the underlying `URLSessionTask`s.
     /// 用于创建底层 URLSessionTask 的配置
+    /// 控制会话配置
     var sessionConfiguration: URLSessionConfiguration { get }
 
     /// Determines whether the `Request` should automatically call `resume()` when adding the first response handler.
