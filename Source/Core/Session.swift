@@ -31,6 +31,7 @@ import Foundation
 /// 为所有请求提供队列管理、拦截器、信任管理、重定向处理等通用功能
 open class Session: @unchecked Sendable {
     /// Shared singleton instance used by all `AF.request` APIs. Cannot be modified.
+    /// 全局单例，确保全局使用统一的配置
     public static let `default` = Session()
 
     /// Underlying `URLSession` used to create `URLSessionTasks` for this instance, and for which this instance's
@@ -43,8 +44,11 @@ open class Session: @unchecked Sendable {
     /// Instance's `SessionDelegate`, which handles the `URLSessionDelegate` methods and `Request` interaction.
     public let delegate: SessionDelegate
     /// Root `DispatchQueue` for all internal callbacks and state update. **MUST** be a serial queue.
+    /// 必须是串行队列，确保操作的顺序性和线程安全。
     public let rootQueue: DispatchQueue
     /// Value determining whether this instance automatically calls `resume()` on all created `Request`s.
+    /// 控制是否自动启动新创建的请求
+    /// true 表示请求创建后立即开始， false 需要手动调用 `resume()` 方法来启动请求。
     public let startRequestsImmediately: Bool
     /// `DispatchQueue` on which `URLRequest`s are created asynchronously. By default this queue uses `rootQueue` as its
     /// `target`, but a separate queue can be used if request creation is determined to be a bottleneck. Always profile
@@ -252,13 +256,14 @@ open class Session: @unchecked Sendable {
     /// Parameters 是 [String: any Any & Sendable] 类型
     /// 使用 ParameterEncoding 协议进行编码
     struct RequestConvertible: URLRequestConvertible {
-        let url: any URLConvertible
-        let method: HTTPMethod
-        let parameters: Parameters?
-        let encoding: any ParameterEncoding
-        let headers: HTTPHeaders?
-        let requestModifier: RequestModifier?
+        let url: any URLConvertible                 /// 请求 URL
+        let method: HTTPMethod                      /// HTTP方法
+        let parameters: Parameters?                 /// 请求参数
+        let encoding: any ParameterEncoding         /// 参数编码方式
+        let headers: HTTPHeaders?                   /// 请求头
+        let requestModifier: RequestModifier?       /// 请求修改器
 
+        /// 将请求配置转换为 URLRequest
         func asURLRequest() throws -> URLRequest {
             var request = try URLRequest(url: url, method: method, headers: headers)
             try requestModifier?(&request)
@@ -268,6 +273,7 @@ open class Session: @unchecked Sendable {
     }
 
     /// Creates a `DataRequest` from a `URLRequest` created using the passed components and a `RequestInterceptor`.
+    /// 创建并执行数据请求
     ///
     /// - Parameters:
     ///   - convertible:     `URLConvertible` value to be used as the `URLRequest`'s `URL`.
@@ -296,6 +302,7 @@ open class Session: @unchecked Sendable {
                                              headers: headers,
                                              requestModifier: requestModifier)
 
+        /// 创建并执行请求
         return request(convertible, interceptor: interceptor)
     }
 
@@ -1062,14 +1069,18 @@ open class Session: @unchecked Sendable {
     // MARK: Perform
 
     /// Starts performing the provided `Request`.
+    /// 执行请求核心方法
     ///
     /// - Parameter request: The `Request` to perform.
     func perform(_ request: Request) {
         rootQueue.async {
+            /// 如果请求已取消，直接返回
             guard !request.isCancelled else { return }
 
+            /// 将请求添加到活跃请求集合
             self.activeRequests.insert(request)
 
+            /// 在请求队列中异步执行请求处理
             self.requestQueue.async {
                 // Leaf types must come first, otherwise they will cast as their superclass.
                 // 叶子类型必须排在第一位，否则它们将被转换为它们的父类。
@@ -1197,20 +1208,33 @@ open class Session: @unchecked Sendable {
 
     // MARK: - Task Handling
 
+    
+    /// 当 URLRequest 创建成功后调用此方法，创建并配置对应的任务
+    /// - Parameters:
+    ///   - urlRequest: 创建好的 URLRequest
+    ///   - request: 关联的请求对象
     func didCreateURLRequest(_ urlRequest: URLRequest, for request: Request) {
+        /// 确保在主队列上执行
         dispatchPrecondition(condition: .onQueue(rootQueue))
 
+        /// 通知请求 URLRequest 已创建
         request.didCreateURLRequest(urlRequest)
 
+        /// 如果请求已取消则直接返回
         guard !request.isCancelled else { return }
 
+        /// 根据请求创建对应的任务
         let task = request.task(for: urlRequest, using: session)
+        /// 建立请求和任务的映射关系
         requestTaskMap[request] = task
+        /// 通知请求任务已创建
         request.didCreateTask(task)
 
+        /// 根据请求状态更新任务状态
         updateStatesForTask(task, request: request)
     }
 
+    /// 处理下载请求的恢复数据
     func didReceiveResumeData(_ data: Data, for request: DownloadRequest) {
         dispatchPrecondition(condition: .onQueue(rootQueue))
 
@@ -1223,6 +1247,11 @@ open class Session: @unchecked Sendable {
         updateStatesForTask(task, request: request)
     }
 
+    
+    /// 根据请求状态更新任务状态
+    /// - Parameters:
+    ///   - task: 需要更新的任务
+    ///   - request: 关联的请求
     func updateStatesForTask(_ task: URLSessionTask, request: Request) {
         dispatchPrecondition(condition: .onQueue(rootQueue))
 
@@ -1230,15 +1259,19 @@ open class Session: @unchecked Sendable {
             switch state {
             case .initialized, .finished:
                 // Do nothing.
+                /// 初始化或已完成状态不需要特殊处理
                 break
             case .resumed:
+                /// 继续状态：恢复任务执行
                 task.resume()
                 rootQueue.async { request.didResumeTask(task) }
             case .suspended:
+                /// 暂停状态：暂停任务执行
                 task.suspend()
                 rootQueue.async { request.didSuspendTask(task) }
             case .cancelled:
                 // Resume to ensure metrics are gathered.
+                /// 取消状态：先恢复以确保收集到指标，然后取消任务
                 task.resume()
                 task.cancel()
                 rootQueue.async { request.didCancelTask(task) }
@@ -1247,11 +1280,18 @@ open class Session: @unchecked Sendable {
     }
 
     // MARK: - Adapters and Retriers
-
+    /// 适配器和重试器
+    
+    
+    /// 获取请求的适配器
+    /// - Parameter request: 需要适配器的请求
+    /// - Returns: 合适的请求适配器
     func adapter(for request: Request) -> (any RequestAdapter)? {
+        /// 如果请求和会话都有拦截器，则合并它们
         if let requestInterceptor = request.interceptor, let sessionInterceptor = interceptor {
             Interceptor(adapters: [requestInterceptor, sessionInterceptor])
         } else {
+            /// 否则使用请求或会话的拦截器
             request.interceptor ?? interceptor
         }
     }
@@ -1334,22 +1374,27 @@ extension Session: SessionStateProvider {
     func didGatherMetricsForTask(_ task: URLSessionTask) {
         dispatchPrecondition(condition: .onQueue(rootQueue))
 
+        /// 尝试解除任务和请求的关联
         let didDisassociate = requestTaskMap.disassociateIfNecessaryAfterGatheringMetricsForTask(task)
 
+        /// 如果成功解除关联，执行等待的完成回调
         if didDisassociate {
             waitingCompletions[task]?()
             waitingCompletions[task] = nil
         }
     }
 
+    /// 任务完成时调用
     func didCompleteTask(_ task: URLSessionTask, completion: @escaping () -> Void) {
         dispatchPrecondition(condition: .onQueue(rootQueue))
 
         let didDisassociate = requestTaskMap.disassociateIfNecessaryAfterCompletingTask(task)
 
         if didDisassociate {
+            /// 如果成功解除关联，立即执行完成回调
             completion()
         } else {
+            /// 否则将完成回调存储起来，等待后续执行
             waitingCompletions[task] = completion
         }
     }

@@ -24,12 +24,17 @@
 
 import Foundation
 
-/// SessionDelegate 是 Alamofire 的核心累之一，实现了 URLSession 的各种代理方法，用于管理网络请求的生命周期。它充当了 URLSession 事件与Alamofire 请求对象之间的桥梁
+/// SessionDelegate 是 Alamofire 的核心类之一，实现了 URLSession 的各种代理方法，用于管理网络请求的生命周期。它充当了 URLSession 事件与Alamofire 请求对象之间的桥梁
 /// 其中，重要的功能就是 将 URLSession 事件路由到对应的 Request 对象
+/// 1、管理网络请求的生命周期
+/// 2、处理身份验证挑战
+/// 3、处理重定向
+/// 4、管理上传/下载进度
+/// 5、处理数据接收
 
 /// Class which implements the various `URLSessionDelegate` methods to connect various Alamofire features.
 open class SessionDelegate: NSObject, @unchecked Sendable {
-    /// 用于处理文件操作
+    /// 用于处理文件操作，主要用于下载任务
     private let fileManager: FileManager
 
     /// 提供会话状态相关的信息和控制
@@ -61,15 +66,24 @@ open class SessionDelegate: NSObject, @unchecked Sendable {
 }
 
 /// Type which provides various `Session` state values.
+/// 管理请求状态和任务的对应关系
 protocol SessionStateProvider: AnyObject, Sendable {
+    /// 服务器信任管理器，用于处理 SSL/TLS 验证
     var serverTrustManager: ServerTrustManager? { get }
+    /// 重定向处理器，处理 HTTP 重定向
     var redirectHandler: (any RedirectHandler)? { get }
+    /// 缓存响应处理器，管理响应缓存策略
     var cachedResponseHandler: (any CachedResponseHandler)? { get }
 
+    /// 根据任务获取对应的请求对象
     func request(for task: URLSessionTask) -> Request?
+    /// 通知收集到任务的性能指标
     func didGatherMetricsForTask(_ task: URLSessionTask)
+    /// 通知任务完成
     func didCompleteTask(_ task: URLSessionTask, completion: @escaping () -> Void)
+    /// 获取任务的认证凭证
     func credential(for task: URLSessionTask, in protectionSpace: URLProtectionSpace) -> URLCredential?
+    /// 处理会话失效时的请求取消操作
     func cancelRequestsForSessionInvalidation(with error: (any Error)?)
 }
 
